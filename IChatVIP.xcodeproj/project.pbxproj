@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		226724C685BC8F67D4E8832F /* Pods_IChatVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */; };
 		D7F5C8C7260D2C5F00FC2B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */; };
 		D7F5C8C9260D2C5F00FC2B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */; };
 		D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8CA260D2C5F00FC2B82 /* AuthViewController.swift */; };
@@ -17,9 +18,14 @@
 		D7F5C8EF260D2D3900FC2B82 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8E4260D2D3800FC2B82 /* UILabel + Extension.swift */; };
 		D7F5C8F0260D2D3900FC2B82 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8E5260D2D3800FC2B82 /* UIImageView + Extension.swift */; };
 		D7F5C8F2260D2D3900FC2B82 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8E7260D2D3900FC2B82 /* UIColor + Extension.swift */; };
+		D7F5C8FB260D308000FC2B82 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8FA260D308000FC2B82 /* ButtonFormView.swift */; };
+		D7F5C8FE260D347300FC2B82 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IChatVIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55B1AD40387898B3C6D6995C /* Pods-IChatVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IChatVIP.debug.xcconfig"; path = "Target Support Files/Pods-IChatVIP/Pods-IChatVIP.debug.xcconfig"; sourceTree = "<group>"; };
+		7C08A13B6ADD8E7E5B9CF976 /* Pods-IChatVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IChatVIP.release.xcconfig"; path = "Target Support Files/Pods-IChatVIP/Pods-IChatVIP.release.xcconfig"; sourceTree = "<group>"; };
 		D7F5C8C3260D2C5F00FC2B82 /* IChatVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IChatVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +38,8 @@
 		D7F5C8E4260D2D3800FC2B82 /* UILabel + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
 		D7F5C8E5260D2D3800FC2B82 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		D7F5C8E7260D2D3900FC2B82 /* UIColor + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		D7F5C8FA260D308000FC2B82 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
+		D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226724C685BC8F67D4E8832F /* Pods_IChatVIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44FBB09B7F5BAB815C47D491 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C25E7BF7D9E6071BF5F5C79F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55B1AD40387898B3C6D6995C /* Pods-IChatVIP.debug.xcconfig */,
+				7C08A13B6ADD8E7E5B9CF976 /* Pods-IChatVIP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D7F5C8BA260D2C5F00FC2B82 = {
 			isa = PBXGroup;
 			children = (
 				D7F5C8C5260D2C5F00FC2B82 /* IChatVIP */,
 				D7F5C8C4260D2C5F00FC2B82 /* Products */,
+				C25E7BF7D9E6071BF5F5C79F /* Pods */,
+				44FBB09B7F5BAB815C47D491 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +106,7 @@
 		D7F5C8DB260D2CE500FC2B82 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D7F5C8FA260D308000FC2B82 /* ButtonFormView.swift */,
 				D7F5C8DC260D2CED00FC2B82 /* UIKit */,
 			);
 			path = Extensions;
@@ -91,6 +120,7 @@
 				D7F5C8E0260D2D3800FC2B82 /* UIFont + Extension.swift */,
 				D7F5C8E5260D2D3800FC2B82 /* UIImageView + Extension.swift */,
 				D7F5C8E4260D2D3800FC2B82 /* UILabel + Extension.swift */,
+				D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -102,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7F5C8D7260D2C6300FC2B82 /* Build configuration list for PBXNativeTarget "IChatVIP" */;
 			buildPhases = (
+				19CF2FA6F60527B04E2E2E2D /* [CP] Check Pods Manifest.lock */,
 				D7F5C8BF260D2C5F00FC2B82 /* Sources */,
 				D7F5C8C0260D2C5F00FC2B82 /* Frameworks */,
 				D7F5C8C1260D2C5F00FC2B82 /* Resources */,
+				F6D205F3B1156D6900271A8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +191,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19CF2FA6F60527B04E2E2E2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IChatVIP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6D205F3B1156D6900271A8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IChatVIP/Pods-IChatVIP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IChatVIP/Pods-IChatVIP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IChatVIP/Pods-IChatVIP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D7F5C8BF260D2C5F00FC2B82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -167,6 +241,8 @@
 				D7F5C8F0260D2D3900FC2B82 /* UIImageView + Extension.swift in Sources */,
 				D7F5C8E9260D2D3900FC2B82 /* UIButton + Extension.swift in Sources */,
 				D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */,
+				D7F5C8FE260D347300FC2B82 /* UIStackView + Extension.swift in Sources */,
+				D7F5C8FB260D308000FC2B82 /* ButtonFormView.swift in Sources */,
 				D7F5C8C7260D2C5F00FC2B82 /* AppDelegate.swift in Sources */,
 				D7F5C8F2260D2D3900FC2B82 /* UIColor + Extension.swift in Sources */,
 				D7F5C8EF260D2D3900FC2B82 /* UILabel + Extension.swift in Sources */,
@@ -307,6 +383,7 @@
 		};
 		D7F5C8D8260D2C6300FC2B82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55B1AD40387898B3C6D6995C /* Pods-IChatVIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -326,6 +403,7 @@
 		};
 		D7F5C8D9260D2C6300FC2B82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C08A13B6ADD8E7E5B9CF976 /* Pods-IChatVIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class AuthViewController: UIViewController {
     
@@ -22,7 +23,28 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        view.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(160)
+            make.centerX.equalToSuperview()
+        }
+        
+        let googleView = ButtonFormView(label: googleLabel, button: googleButton)
+        let emailView = ButtonFormView(label: emailLabel, button: emailButton)
+        let alreadyOnboardView = ButtonFormView(label: alreadyOnboardLabel, button: loginButton)
+        
+        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, alreadyOnboardView], axis: .vertical, spacing: 40)
+        
+        view.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(logoImageView.snp.bottom).offset(160)
+            make.left.right.equalToSuperview().inset(40)
+        }
     }
 
 }
