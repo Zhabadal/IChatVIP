@@ -9,6 +9,8 @@ import UIKit
 
 class OneLineTextFieldView: UIView {
     
+    var textField: UITextField!
+    
     init(labelText: String, font: UIFont? = .avenir20()) {
         super.init(frame: .zero)
         
@@ -18,9 +20,10 @@ class OneLineTextFieldView: UIView {
             make.left.top.equalToSuperview()
         }
         
-        let textField = UITextField()
+        textField = UITextField()
         textField.font = font
         textField.borderStyle = .none
+        textField.autocorrectionType = .no
         addSubview(textField)
         textField.snp.makeConstraints { make in
             make.top.equalTo(label.snp.bottom)

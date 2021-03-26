@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		226724C685BC8F67D4E8832F /* Pods_IChatVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */; };
+		D7BD0A9D260E9CF700744F06 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0A9C260E9CF700744F06 /* AuthService.swift */; };
+		D7BD0AA0260E9FB600744F06 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0A9F260E9FB600744F06 /* UIViewController + Extension.swift */; };
 		D7F5C8C7260D2C5F00FC2B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */; };
 		D7F5C8C9260D2C5F00FC2B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */; };
 		D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8CA260D2C5F00FC2B82 /* AuthViewController.swift */; };
@@ -29,12 +31,15 @@
 		D7F5C918260E8ECA00FC2B82 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C917260E8ECA00FC2B82 /* MainTabBarViewController.swift */; };
 		D7F5C91B260E8EEB00FC2B82 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C91A260E8EEB00FC2B82 /* ListViewController.swift */; };
 		D7F5C91E260E8EF900FC2B82 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C91D260E8EF900FC2B82 /* PeopleViewController.swift */; };
+		D7F5C931260E983200FC2B82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7F5C930260E983200FC2B82 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IChatVIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B1AD40387898B3C6D6995C /* Pods-IChatVIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IChatVIP.debug.xcconfig"; path = "Target Support Files/Pods-IChatVIP/Pods-IChatVIP.debug.xcconfig"; sourceTree = "<group>"; };
 		7C08A13B6ADD8E7E5B9CF976 /* Pods-IChatVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IChatVIP.release.xcconfig"; path = "Target Support Files/Pods-IChatVIP/Pods-IChatVIP.release.xcconfig"; sourceTree = "<group>"; };
+		D7BD0A9C260E9CF700744F06 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		D7BD0A9F260E9FB600744F06 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		D7F5C8C3260D2C5F00FC2B82 /* IChatVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IChatVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		D7F5C917260E8ECA00FC2B82 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		D7F5C91A260E8EEB00FC2B82 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		D7F5C91D260E8EF900FC2B82 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		D7F5C930260E983200FC2B82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D7BD0A9B260E9CCF00744F06 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0A9C260E9CF700744F06 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		D7F5C8BA260D2C5F00FC2B82 = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +128,12 @@
 				D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */,
 				D7F5C915260E8E5C00FC2B82 /* SignIn&Auth */,
 				D7F5C916260E8EA300FC2B82 /* Controllers */,
+				D7BD0A9B260E9CCF00744F06 /* Services */,
 				D7F5C8DB260D2CE500FC2B82 /* Extensions */,
 				D7F5C8CF260D2C6300FC2B82 /* Assets.xcassets */,
 				D7F5C8D1260D2C6300FC2B82 /* LaunchScreen.storyboard */,
 				D7F5C8D4260D2C6300FC2B82 /* Info.plist */,
+				D7F5C930260E983200FC2B82 /* GoogleService-Info.plist */,
 			);
 			path = IChatVIP;
 			sourceTree = "<group>";
@@ -143,6 +159,7 @@
 				D7F5C8E4260D2D3800FC2B82 /* UILabel + Extension.swift */,
 				D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */,
 				D7F5C912260E88DB00FC2B82 /* UISegmentedControl + Extension.swift */,
+				D7BD0A9F260E9FB600744F06 /* UIViewController + Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7F5C8D3260D2C6300FC2B82 /* LaunchScreen.storyboard in Resources */,
+				D7F5C931260E983200FC2B82 /* GoogleService-Info.plist in Resources */,
 				D7F5C8D0260D2C6300FC2B82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,8 +306,10 @@
 				D7F5C8F0260D2D3900FC2B82 /* UIImageView + Extension.swift in Sources */,
 				D7F5C91E260E8EF900FC2B82 /* PeopleViewController.swift in Sources */,
 				D7F5C8E9260D2D3900FC2B82 /* UIButton + Extension.swift in Sources */,
+				D7BD0A9D260E9CF700744F06 /* AuthService.swift in Sources */,
 				D7F5C90D260D5ACA00FC2B82 /* SetupProfileViewController.swift in Sources */,
 				D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */,
+				D7BD0AA0260E9FB600744F06 /* UIViewController + Extension.swift in Sources */,
 				D7F5C8FE260D347300FC2B82 /* UIStackView + Extension.swift in Sources */,
 				D7F5C910260D5C5800FC2B82 /* AddPhotoView.swift in Sources */,
 				D7F5C8FB260D308000FC2B82 /* ButtonFormView.swift in Sources */,
