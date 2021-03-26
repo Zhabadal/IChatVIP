@@ -32,4 +32,13 @@ extension UIButton {
         }
     }
     
+    func customizeGoogleButton() {
+        let googleLogo = UIImageView(image: #imageLiteral(resourceName: "googleLogo"), contentMode: .scaleAspectFit)
+        addSubview(googleLogo)
+        googleLogo.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().inset(24)
+        }
+    }
+    
 }

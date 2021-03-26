@@ -17,17 +17,18 @@ class SignUpViewController: UIViewController {
     let confirmPasswordTextFieldView = OneLineTextFieldView(labelText: "Confirm password")
     
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, backgroundColor: .buttonDark())
-    let loginButton = UIButton()
+    let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.buttonRed(), for: .normal)
+        button.titleLabel?.font = .avenir20()
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.setTitleColor(.buttonRed(), for: .normal)
-        loginButton.titleLabel?.font = .avenir20()
-        
         setupConstraints()
     }
     
@@ -38,7 +39,9 @@ class SignUpViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-        let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton], axis: .horizontal, spacing: -1)
+        loginButton.contentHorizontalAlignment = .leading
+        let bottomStackView = UIStackView(arrangedSubviews: [alreadyOnboardLabel, loginButton], axis: .horizontal, spacing: 10)
+        bottomStackView.alignment = .firstBaseline
         
         view.addSubview(welcomeLabel)
         welcomeLabel.snp.makeConstraints { make in
@@ -71,10 +74,10 @@ struct SignUpViewControllerProvider: PreviewProvider {
     }
     
     struct ContainerView: UIViewControllerRepresentable {
-        let signUpViewController = SignUpViewController()
+        let viewController = SignUpViewController()
         
         func makeUIViewController(context: Context) -> some UIViewController {
-            return signUpViewController
+            return viewController
         }
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}

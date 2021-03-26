@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import SnapKit
 
 class AuthViewController: UIViewController {
     
@@ -24,6 +23,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        googleButton.customizeGoogleButton()
         setupConstraints()
     }
     
@@ -59,10 +59,10 @@ struct AuthViewControllerProvider: PreviewProvider {
     }
     
     struct ContainerView: UIViewControllerRepresentable {
-        let authViewController = AuthViewController()
+        let viewController = AuthViewController()
         
         func makeUIViewController(context: Context) -> some UIViewController {
-            return authViewController
+            return viewController
         }
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
