@@ -1,0 +1,71 @@
+//
+//  SignUpVipRouter.swift
+//  IChatVIP
+//
+//  Created by Александр Бадмаев on 28.03.2021.
+//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
+//
+
+import UIKit
+
+protocol SignUpVipRoutingLogic {
+    func routeToParent()
+    func showAlert(title: String, message: String)
+    func routeToSetupProfile()
+}
+
+protocol SignUpVipDataPassing {
+    var dataStore: SignUpVipDataStore? { get }
+}
+
+class SignUpVipRouter: NSObject, SignUpVipRoutingLogic, SignUpVipDataPassing {
+    
+    weak var viewController: SignUpVipViewController?
+    var dataStore: SignUpVipDataStore?
+    
+    // MARK: Routing
+    func routeToParent() {
+        if let destinationVC = viewController?.presentingViewController as? AuthVipViewController {
+            navigateToParent(source: viewController!, destination: destinationVC)
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        if let viewController = viewController {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+                if self?.dataStore?.user != nil {
+                    self?.routeToSetupProfile()
+                }
+            }
+            alertVC.addAction(okAction)
+            presentFrom(source: viewController, destination: alertVC)
+        }
+    }
+    
+    func routeToSetupProfile() {
+        if let viewController = viewController, let homeDS = dataStore {
+            let detailVC = SetupProfileVipViewController(nibName: nil, bundle: nil)
+            if var detailDS = detailVC.router?.dataStore {
+                passDataToDetail(source: homeDS, destination: &detailDS)
+                presentFrom(source: viewController, destination: detailVC)
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+    private func navigateToParent(source: SignUpVipViewController, destination: AuthVipViewController) {
+        source.dismiss(animated: true) {
+            destination.router?.routeToLogin()
+        }
+    }
+    
+    private func presentFrom(source: UIViewController, destination: UIViewController) {
+        source.present(destination, animated: true)
+    }
+    
+    // MARK: - Passing data
+    private func passDataToDetail(source: SignUpVipDataStore, destination: inout SetupProfileVipDataStore) {
+        destination.user = source.user
+    }
+}

@@ -10,9 +10,49 @@
 		226724C685BC8F67D4E8832F /* Pods_IChatVIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B27F2B03F79F3A993B561F /* Pods_IChatVIP.framework */; };
 		D7BD0A9D260E9CF700744F06 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0A9C260E9CF700744F06 /* AuthService.swift */; };
 		D7BD0AA0260E9FB600744F06 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0A9F260E9FB600744F06 /* UIViewController + Extension.swift */; };
+		D7BD0ABA260FD8F400744F06 /* AuthVipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB3260FD8F400744F06 /* AuthVipPresenter.swift */; };
+		D7BD0ABB260FD8F400744F06 /* AuthVipWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB4260FD8F400744F06 /* AuthVipWorker.swift */; };
+		D7BD0ABC260FD8F400744F06 /* AuthVipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB5260FD8F400744F06 /* AuthVipRouter.swift */; };
+		D7BD0ABD260FD8F400744F06 /* AuthVipModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB6260FD8F400744F06 /* AuthVipModels.swift */; };
+		D7BD0ABE260FD8F400744F06 /* AuthVipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB7260FD8F400744F06 /* AuthVipViewController.swift */; };
+		D7BD0ABF260FD8F400744F06 /* AuthVipInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AB8260FD8F400744F06 /* AuthVipInteractor.swift */; };
+		D7BD0ACC260FE10C00744F06 /* SignUpVipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AC5260FE10C00744F06 /* SignUpVipPresenter.swift */; };
+		D7BD0ACD260FE10C00744F06 /* SignUpVipWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AC6260FE10C00744F06 /* SignUpVipWorker.swift */; };
+		D7BD0ACE260FE10C00744F06 /* SignUpVipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AC7260FE10C00744F06 /* SignUpVipRouter.swift */; };
+		D7BD0ACF260FE10C00744F06 /* SignUpVipModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AC8260FE10C00744F06 /* SignUpVipModels.swift */; };
+		D7BD0AD0260FE10D00744F06 /* SignUpVipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AC9260FE10C00744F06 /* SignUpVipViewController.swift */; };
+		D7BD0AD1260FE10D00744F06 /* SignUpVipInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0ACA260FE10C00744F06 /* SignUpVipInteractor.swift */; };
+		D7BD0ADE260FE47000744F06 /* LoginVipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AD7260FE47000744F06 /* LoginVipPresenter.swift */; };
+		D7BD0ADF260FE47000744F06 /* LoginVipWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AD8260FE47000744F06 /* LoginVipWorker.swift */; };
+		D7BD0AE0260FE47000744F06 /* LoginVipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AD9260FE47000744F06 /* LoginVipRouter.swift */; };
+		D7BD0AE1260FE47000744F06 /* LoginVipModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0ADA260FE47000744F06 /* LoginVipModels.swift */; };
+		D7BD0AE2260FE47000744F06 /* LoginVipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0ADB260FE47000744F06 /* LoginVipViewController.swift */; };
+		D7BD0AE3260FE47000744F06 /* LoginVipInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0ADC260FE47000744F06 /* LoginVipInteractor.swift */; };
+		D7BD0AF2260FF3B700744F06 /* SetupProfileVipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AEC260FF3B700744F06 /* SetupProfileVipPresenter.swift */; };
+		D7BD0AF3260FF3B700744F06 /* SetupProfileVipWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AED260FF3B700744F06 /* SetupProfileVipWorker.swift */; };
+		D7BD0AF4260FF3B700744F06 /* SetupProfileVipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AEE260FF3B700744F06 /* SetupProfileVipRouter.swift */; };
+		D7BD0AF5260FF3B700744F06 /* SetupProfileVipModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AEF260FF3B700744F06 /* SetupProfileVipModels.swift */; };
+		D7BD0AF6260FF3B700744F06 /* SetupProfileVipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AF0260FF3B700744F06 /* SetupProfileVipViewController.swift */; };
+		D7BD0AF7260FF3B700744F06 /* SetupProfileVipInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AF1260FF3B700744F06 /* SetupProfileVipInteractor.swift */; };
+		D7BD0AFA260FF66300744F06 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AF9260FF66300744F06 /* Validators.swift */; };
+		D7BD0AFF260FF83D00744F06 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0AFE260FF83D00744F06 /* AuthError.swift */; };
+		D7BD0B1D261085F900744F06 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0B1C261085F900744F06 /* FirestoreService.swift */; };
+		D7BD0B21261086FB00744F06 /* MUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0B20261086FB00744F06 /* MUser.swift */; };
+		D7BD0B252610883F00744F06 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BD0B242610883F00744F06 /* UserError.swift */; };
+		D7DCAF2A26168AC8004A33FD /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2326168AC8004A33FD /* ListPresenter.swift */; };
+		D7DCAF2B26168AC8004A33FD /* ListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2426168AC8004A33FD /* ListWorker.swift */; };
+		D7DCAF2C26168AC8004A33FD /* ListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2526168AC8004A33FD /* ListRouter.swift */; };
+		D7DCAF2D26168AC8004A33FD /* ListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2626168AC8004A33FD /* ListModels.swift */; };
+		D7DCAF2E26168AC8004A33FD /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2726168AC8004A33FD /* ListViewController.swift */; };
+		D7DCAF2F26168AC8004A33FD /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF2826168AC8004A33FD /* ListInteractor.swift */; };
+		D7DCAF3B26168B24004A33FD /* PeoplePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3426168B24004A33FD /* PeoplePresenter.swift */; };
+		D7DCAF3C26168B24004A33FD /* PeopleWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3526168B24004A33FD /* PeopleWorker.swift */; };
+		D7DCAF3D26168B24004A33FD /* PeopleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3626168B24004A33FD /* PeopleRouter.swift */; };
+		D7DCAF3E26168B24004A33FD /* PeopleModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3726168B24004A33FD /* PeopleModels.swift */; };
+		D7DCAF3F26168B24004A33FD /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3826168B24004A33FD /* PeopleViewController.swift */; };
+		D7DCAF4026168B24004A33FD /* PeopleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DCAF3926168B24004A33FD /* PeopleInteractor.swift */; };
 		D7F5C8C7260D2C5F00FC2B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */; };
 		D7F5C8C9260D2C5F00FC2B82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */; };
-		D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8CA260D2C5F00FC2B82 /* AuthViewController.swift */; };
 		D7F5C8D0260D2C6300FC2B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7F5C8CF260D2C6300FC2B82 /* Assets.xcassets */; };
 		D7F5C8D3260D2C6300FC2B82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F5C8D1260D2C6300FC2B82 /* LaunchScreen.storyboard */; };
 		D7F5C8E9260D2D3900FC2B82 /* UIButton + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8DE260D2D3800FC2B82 /* UIButton + Extension.swift */; };
@@ -22,15 +62,10 @@
 		D7F5C8F2260D2D3900FC2B82 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8E7260D2D3900FC2B82 /* UIColor + Extension.swift */; };
 		D7F5C8FB260D308000FC2B82 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8FA260D308000FC2B82 /* ButtonFormView.swift */; };
 		D7F5C8FE260D347300FC2B82 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */; };
-		D7F5C902260D36A600FC2B82 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C901260D36A600FC2B82 /* SignUpViewController.swift */; };
 		D7F5C905260D381F00FC2B82 /* OneLineTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C904260D381F00FC2B82 /* OneLineTextFieldView.swift */; };
-		D7F5C90A260D55DB00FC2B82 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C909260D55DB00FC2B82 /* LoginViewController.swift */; };
-		D7F5C90D260D5ACA00FC2B82 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C90C260D5ACA00FC2B82 /* SetupProfileViewController.swift */; };
 		D7F5C910260D5C5800FC2B82 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C90F260D5C5800FC2B82 /* AddPhotoView.swift */; };
 		D7F5C913260E88DB00FC2B82 /* UISegmentedControl + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C912260E88DB00FC2B82 /* UISegmentedControl + Extension.swift */; };
 		D7F5C918260E8ECA00FC2B82 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C917260E8ECA00FC2B82 /* MainTabBarViewController.swift */; };
-		D7F5C91B260E8EEB00FC2B82 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C91A260E8EEB00FC2B82 /* ListViewController.swift */; };
-		D7F5C91E260E8EF900FC2B82 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F5C91D260E8EF900FC2B82 /* PeopleViewController.swift */; };
 		D7F5C931260E983200FC2B82 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7F5C930260E983200FC2B82 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -40,10 +75,50 @@
 		7C08A13B6ADD8E7E5B9CF976 /* Pods-IChatVIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IChatVIP.release.xcconfig"; path = "Target Support Files/Pods-IChatVIP/Pods-IChatVIP.release.xcconfig"; sourceTree = "<group>"; };
 		D7BD0A9C260E9CF700744F06 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		D7BD0A9F260E9FB600744F06 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		D7BD0AB3260FD8F400744F06 /* AuthVipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipPresenter.swift; sourceTree = "<group>"; };
+		D7BD0AB4260FD8F400744F06 /* AuthVipWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipWorker.swift; sourceTree = "<group>"; };
+		D7BD0AB5260FD8F400744F06 /* AuthVipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipRouter.swift; sourceTree = "<group>"; };
+		D7BD0AB6260FD8F400744F06 /* AuthVipModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipModels.swift; sourceTree = "<group>"; };
+		D7BD0AB7260FD8F400744F06 /* AuthVipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipViewController.swift; sourceTree = "<group>"; };
+		D7BD0AB8260FD8F400744F06 /* AuthVipInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVipInteractor.swift; sourceTree = "<group>"; };
+		D7BD0AC5260FE10C00744F06 /* SignUpVipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipPresenter.swift; sourceTree = "<group>"; };
+		D7BD0AC6260FE10C00744F06 /* SignUpVipWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipWorker.swift; sourceTree = "<group>"; };
+		D7BD0AC7260FE10C00744F06 /* SignUpVipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipRouter.swift; sourceTree = "<group>"; };
+		D7BD0AC8260FE10C00744F06 /* SignUpVipModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipModels.swift; sourceTree = "<group>"; };
+		D7BD0AC9260FE10C00744F06 /* SignUpVipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipViewController.swift; sourceTree = "<group>"; };
+		D7BD0ACA260FE10C00744F06 /* SignUpVipInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVipInteractor.swift; sourceTree = "<group>"; };
+		D7BD0AD7260FE47000744F06 /* LoginVipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipPresenter.swift; sourceTree = "<group>"; };
+		D7BD0AD8260FE47000744F06 /* LoginVipWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipWorker.swift; sourceTree = "<group>"; };
+		D7BD0AD9260FE47000744F06 /* LoginVipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipRouter.swift; sourceTree = "<group>"; };
+		D7BD0ADA260FE47000744F06 /* LoginVipModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipModels.swift; sourceTree = "<group>"; };
+		D7BD0ADB260FE47000744F06 /* LoginVipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipViewController.swift; sourceTree = "<group>"; };
+		D7BD0ADC260FE47000744F06 /* LoginVipInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVipInteractor.swift; sourceTree = "<group>"; };
+		D7BD0AEC260FF3B700744F06 /* SetupProfileVipPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipPresenter.swift; sourceTree = "<group>"; };
+		D7BD0AED260FF3B700744F06 /* SetupProfileVipWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipWorker.swift; sourceTree = "<group>"; };
+		D7BD0AEE260FF3B700744F06 /* SetupProfileVipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipRouter.swift; sourceTree = "<group>"; };
+		D7BD0AEF260FF3B700744F06 /* SetupProfileVipModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipModels.swift; sourceTree = "<group>"; };
+		D7BD0AF0260FF3B700744F06 /* SetupProfileVipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipViewController.swift; sourceTree = "<group>"; };
+		D7BD0AF1260FF3B700744F06 /* SetupProfileVipInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileVipInteractor.swift; sourceTree = "<group>"; };
+		D7BD0AF9260FF66300744F06 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
+		D7BD0AFE260FF83D00744F06 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		D7BD0B1C261085F900744F06 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		D7BD0B20261086FB00744F06 /* MUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUser.swift; sourceTree = "<group>"; };
+		D7BD0B242610883F00744F06 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
+		D7DCAF2326168AC8004A33FD /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		D7DCAF2426168AC8004A33FD /* ListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWorker.swift; sourceTree = "<group>"; };
+		D7DCAF2526168AC8004A33FD /* ListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRouter.swift; sourceTree = "<group>"; };
+		D7DCAF2626168AC8004A33FD /* ListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModels.swift; sourceTree = "<group>"; };
+		D7DCAF2726168AC8004A33FD /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		D7DCAF2826168AC8004A33FD /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		D7DCAF3426168B24004A33FD /* PeoplePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePresenter.swift; sourceTree = "<group>"; };
+		D7DCAF3526168B24004A33FD /* PeopleWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleWorker.swift; sourceTree = "<group>"; };
+		D7DCAF3626168B24004A33FD /* PeopleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleRouter.swift; sourceTree = "<group>"; };
+		D7DCAF3726168B24004A33FD /* PeopleModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModels.swift; sourceTree = "<group>"; };
+		D7DCAF3826168B24004A33FD /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		D7DCAF3926168B24004A33FD /* PeopleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleInteractor.swift; sourceTree = "<group>"; };
 		D7F5C8C3260D2C5F00FC2B82 /* IChatVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IChatVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D7F5C8CA260D2C5F00FC2B82 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D7F5C8CF260D2C6300FC2B82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7F5C8D2260D2C6300FC2B82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7F5C8D4260D2C6300FC2B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,15 +129,10 @@
 		D7F5C8E7260D2D3900FC2B82 /* UIColor + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		D7F5C8FA260D308000FC2B82 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
 		D7F5C8FD260D347300FC2B82 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
-		D7F5C901260D36A600FC2B82 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D7F5C904260D381F00FC2B82 /* OneLineTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextFieldView.swift; sourceTree = "<group>"; };
-		D7F5C909260D55DB00FC2B82 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D7F5C90C260D5ACA00FC2B82 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		D7F5C90F260D5C5800FC2B82 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		D7F5C912260E88DB00FC2B82 /* UISegmentedControl + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + Extension.swift"; sourceTree = "<group>"; };
 		D7F5C917260E8ECA00FC2B82 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		D7F5C91A260E8EEB00FC2B82 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		D7F5C91D260E8EF900FC2B82 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		D7F5C930260E983200FC2B82 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,12 +165,120 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D79F254226167D3C000C802A /* People */ = {
+			isa = PBXGroup;
+			children = (
+				D7DCAF3826168B24004A33FD /* PeopleViewController.swift */,
+				D7DCAF3926168B24004A33FD /* PeopleInteractor.swift */,
+				D7DCAF3426168B24004A33FD /* PeoplePresenter.swift */,
+				D7DCAF3526168B24004A33FD /* PeopleWorker.swift */,
+				D7DCAF3626168B24004A33FD /* PeopleRouter.swift */,
+				D7DCAF3726168B24004A33FD /* PeopleModels.swift */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		D79F255126167DD6000C802A /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D7DCAF2726168AC8004A33FD /* ListViewController.swift */,
+				D7DCAF2826168AC8004A33FD /* ListInteractor.swift */,
+				D7DCAF2326168AC8004A33FD /* ListPresenter.swift */,
+				D7DCAF2426168AC8004A33FD /* ListWorker.swift */,
+				D7DCAF2526168AC8004A33FD /* ListRouter.swift */,
+				D7DCAF2626168AC8004A33FD /* ListModels.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		D7BD0A9B260E9CCF00744F06 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				D7BD0A9C260E9CF700744F06 /* AuthService.swift */,
+				D7BD0B1C261085F900744F06 /* FirestoreService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		D7BD0AB2260FD8C000744F06 /* SignIn&Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0AC3260FE0DD00744F06 /* Auth */,
+				D7BD0AC4260FE0EB00744F06 /* SignUp */,
+				D7BD0AD6260FE45700744F06 /* Login */,
+				D7BD0AEB260FF38D00744F06 /* SetupProfile */,
+			);
+			path = "SignIn&Auth";
+			sourceTree = "<group>";
+		};
+		D7BD0AC3260FE0DD00744F06 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0AB7260FD8F400744F06 /* AuthVipViewController.swift */,
+				D7BD0AB8260FD8F400744F06 /* AuthVipInteractor.swift */,
+				D7BD0AB3260FD8F400744F06 /* AuthVipPresenter.swift */,
+				D7BD0AB6260FD8F400744F06 /* AuthVipModels.swift */,
+				D7BD0AB4260FD8F400744F06 /* AuthVipWorker.swift */,
+				D7BD0AB5260FD8F400744F06 /* AuthVipRouter.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D7BD0AC4260FE0EB00744F06 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0AC9260FE10C00744F06 /* SignUpVipViewController.swift */,
+				D7BD0ACA260FE10C00744F06 /* SignUpVipInteractor.swift */,
+				D7BD0AC5260FE10C00744F06 /* SignUpVipPresenter.swift */,
+				D7BD0AC7260FE10C00744F06 /* SignUpVipRouter.swift */,
+				D7BD0AC8260FE10C00744F06 /* SignUpVipModels.swift */,
+				D7BD0AC6260FE10C00744F06 /* SignUpVipWorker.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		D7BD0AD6260FE45700744F06 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0ADB260FE47000744F06 /* LoginVipViewController.swift */,
+				D7BD0ADC260FE47000744F06 /* LoginVipInteractor.swift */,
+				D7BD0AD7260FE47000744F06 /* LoginVipPresenter.swift */,
+				D7BD0AD9260FE47000744F06 /* LoginVipRouter.swift */,
+				D7BD0ADA260FE47000744F06 /* LoginVipModels.swift */,
+				D7BD0AD8260FE47000744F06 /* LoginVipWorker.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D7BD0AEB260FF38D00744F06 /* SetupProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0AF0260FF3B700744F06 /* SetupProfileVipViewController.swift */,
+				D7BD0AF1260FF3B700744F06 /* SetupProfileVipInteractor.swift */,
+				D7BD0AEC260FF3B700744F06 /* SetupProfileVipPresenter.swift */,
+				D7BD0AEF260FF3B700744F06 /* SetupProfileVipModels.swift */,
+				D7BD0AED260FF3B700744F06 /* SetupProfileVipWorker.swift */,
+				D7BD0AEE260FF3B700744F06 /* SetupProfileVipRouter.swift */,
+			);
+			path = SetupProfile;
+			sourceTree = "<group>";
+		};
+		D7BD0AFD260FF82100744F06 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0AF9260FF66300744F06 /* Validators.swift */,
+				D7BD0AFE260FF83D00744F06 /* AuthError.swift */,
+				D7BD0B242610883F00744F06 /* UserError.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D7BD0B1F261086EB00744F06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7BD0B20261086FB00744F06 /* MUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D7F5C8BA260D2C5F00FC2B82 = {
@@ -126,10 +304,12 @@
 			children = (
 				D7F5C8C6260D2C5F00FC2B82 /* AppDelegate.swift */,
 				D7F5C8C8260D2C5F00FC2B82 /* SceneDelegate.swift */,
-				D7F5C915260E8E5C00FC2B82 /* SignIn&Auth */,
+				D7BD0AB2260FD8C000744F06 /* SignIn&Auth */,
 				D7F5C916260E8EA300FC2B82 /* Controllers */,
+				D7BD0B1F261086EB00744F06 /* Models */,
 				D7BD0A9B260E9CCF00744F06 /* Services */,
 				D7F5C8DB260D2CE500FC2B82 /* Extensions */,
+				D7BD0AFD260FF82100744F06 /* Helpers */,
 				D7F5C8CF260D2C6300FC2B82 /* Assets.xcassets */,
 				D7F5C8D1260D2C6300FC2B82 /* LaunchScreen.storyboard */,
 				D7F5C8D4260D2C6300FC2B82 /* Info.plist */,
@@ -164,23 +344,12 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		D7F5C915260E8E5C00FC2B82 /* SignIn&Auth */ = {
-			isa = PBXGroup;
-			children = (
-				D7F5C8CA260D2C5F00FC2B82 /* AuthViewController.swift */,
-				D7F5C901260D36A600FC2B82 /* SignUpViewController.swift */,
-				D7F5C909260D55DB00FC2B82 /* LoginViewController.swift */,
-				D7F5C90C260D5ACA00FC2B82 /* SetupProfileViewController.swift */,
-			);
-			path = "SignIn&Auth";
-			sourceTree = "<group>";
-		};
 		D7F5C916260E8EA300FC2B82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D7F5C917260E8ECA00FC2B82 /* MainTabBarViewController.swift */,
-				D7F5C91A260E8EEB00FC2B82 /* ListViewController.swift */,
-				D7F5C91D260E8EF900FC2B82 /* PeopleViewController.swift */,
+				D79F254226167D3C000C802A /* People */,
+				D79F255126167DD6000C802A /* List */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -299,26 +468,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BD0ABE260FD8F400744F06 /* AuthVipViewController.swift in Sources */,
+				D7BD0ABC260FD8F400744F06 /* AuthVipRouter.swift in Sources */,
 				D7F5C905260D381F00FC2B82 /* OneLineTextFieldView.swift in Sources */,
-				D7F5C902260D36A600FC2B82 /* SignUpViewController.swift in Sources */,
+				D7BD0ACC260FE10C00744F06 /* SignUpVipPresenter.swift in Sources */,
+				D7BD0AE1260FE47000744F06 /* LoginVipModels.swift in Sources */,
+				D7BD0ABD260FD8F400744F06 /* AuthVipModels.swift in Sources */,
+				D7BD0ABB260FD8F400744F06 /* AuthVipWorker.swift in Sources */,
+				D7BD0B21261086FB00744F06 /* MUser.swift in Sources */,
+				D7DCAF3E26168B24004A33FD /* PeopleModels.swift in Sources */,
+				D7DCAF3C26168B24004A33FD /* PeopleWorker.swift in Sources */,
 				D7F5C913260E88DB00FC2B82 /* UISegmentedControl + Extension.swift in Sources */,
+				D7DCAF2A26168AC8004A33FD /* ListPresenter.swift in Sources */,
+				D7BD0ACD260FE10C00744F06 /* SignUpVipWorker.swift in Sources */,
+				D7BD0AF2260FF3B700744F06 /* SetupProfileVipPresenter.swift in Sources */,
+				D7DCAF2B26168AC8004A33FD /* ListWorker.swift in Sources */,
+				D7BD0AF3260FF3B700744F06 /* SetupProfileVipWorker.swift in Sources */,
 				D7F5C918260E8ECA00FC2B82 /* MainTabBarViewController.swift in Sources */,
+				D7BD0B252610883F00744F06 /* UserError.swift in Sources */,
 				D7F5C8F0260D2D3900FC2B82 /* UIImageView + Extension.swift in Sources */,
-				D7F5C91E260E8EF900FC2B82 /* PeopleViewController.swift in Sources */,
+				D7BD0ADF260FE47000744F06 /* LoginVipWorker.swift in Sources */,
 				D7F5C8E9260D2D3900FC2B82 /* UIButton + Extension.swift in Sources */,
+				D7BD0AFF260FF83D00744F06 /* AuthError.swift in Sources */,
+				D7DCAF2D26168AC8004A33FD /* ListModels.swift in Sources */,
 				D7BD0A9D260E9CF700744F06 /* AuthService.swift in Sources */,
-				D7F5C90D260D5ACA00FC2B82 /* SetupProfileViewController.swift in Sources */,
-				D7F5C8CB260D2C5F00FC2B82 /* AuthViewController.swift in Sources */,
+				D7BD0AFA260FF66300744F06 /* Validators.swift in Sources */,
+				D7DCAF3F26168B24004A33FD /* PeopleViewController.swift in Sources */,
+				D7BD0AE2260FE47000744F06 /* LoginVipViewController.swift in Sources */,
+				D7BD0AF5260FF3B700744F06 /* SetupProfileVipModels.swift in Sources */,
+				D7BD0ABA260FD8F400744F06 /* AuthVipPresenter.swift in Sources */,
 				D7BD0AA0260E9FB600744F06 /* UIViewController + Extension.swift in Sources */,
+				D7DCAF2C26168AC8004A33FD /* ListRouter.swift in Sources */,
+				D7BD0AF7260FF3B700744F06 /* SetupProfileVipInteractor.swift in Sources */,
+				D7BD0ACF260FE10C00744F06 /* SignUpVipModels.swift in Sources */,
 				D7F5C8FE260D347300FC2B82 /* UIStackView + Extension.swift in Sources */,
 				D7F5C910260D5C5800FC2B82 /* AddPhotoView.swift in Sources */,
 				D7F5C8FB260D308000FC2B82 /* ButtonFormView.swift in Sources */,
+				D7BD0AD1260FE10D00744F06 /* SignUpVipInteractor.swift in Sources */,
+				D7DCAF2F26168AC8004A33FD /* ListInteractor.swift in Sources */,
+				D7DCAF2E26168AC8004A33FD /* ListViewController.swift in Sources */,
+				D7BD0AE0260FE47000744F06 /* LoginVipRouter.swift in Sources */,
 				D7F5C8C7260D2C5F00FC2B82 /* AppDelegate.swift in Sources */,
+				D7DCAF4026168B24004A33FD /* PeopleInteractor.swift in Sources */,
+				D7BD0ADE260FE47000744F06 /* LoginVipPresenter.swift in Sources */,
 				D7F5C8F2260D2D3900FC2B82 /* UIColor + Extension.swift in Sources */,
+				D7BD0AE3260FE47000744F06 /* LoginVipInteractor.swift in Sources */,
 				D7F5C8EF260D2D3900FC2B82 /* UILabel + Extension.swift in Sources */,
-				D7F5C91B260E8EEB00FC2B82 /* ListViewController.swift in Sources */,
+				D7BD0ACE260FE10C00744F06 /* SignUpVipRouter.swift in Sources */,
+				D7BD0ABF260FD8F400744F06 /* AuthVipInteractor.swift in Sources */,
+				D7BD0AF6260FF3B700744F06 /* SetupProfileVipViewController.swift in Sources */,
+				D7BD0B1D261085F900744F06 /* FirestoreService.swift in Sources */,
+				D7BD0AD0260FE10D00744F06 /* SignUpVipViewController.swift in Sources */,
+				D7DCAF3D26168B24004A33FD /* PeopleRouter.swift in Sources */,
 				D7F5C8EB260D2D3900FC2B82 /* UIFont + Extension.swift in Sources */,
-				D7F5C90A260D55DB00FC2B82 /* LoginViewController.swift in Sources */,
+				D7DCAF3B26168B24004A33FD /* PeoplePresenter.swift in Sources */,
+				D7BD0AF4260FF3B700744F06 /* SetupProfileVipRouter.swift in Sources */,
 				D7F5C8C9260D2C5F00FC2B82 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
