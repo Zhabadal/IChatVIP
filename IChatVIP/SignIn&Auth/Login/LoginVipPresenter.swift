@@ -19,12 +19,6 @@ class LoginVipPresenter: LoginVipPresentationLogic {
         switch response {
         case let .presentAlert(title, message):
             viewController?.displayData(viewModel: .displayAlert(title: title, message: message))
-            
-        case .presentMainTabBar:
-            viewController?.displayData(viewModel: .displayMainTabBar)
-            
-        case .presentSetupProfile:
-            viewController?.displayData(viewModel: .displaySetupProfile)
         }
     }
     

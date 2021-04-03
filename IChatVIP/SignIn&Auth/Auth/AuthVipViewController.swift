@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol AuthVipDisplayLogic: class {
     func displayData(viewModel: AuthVip.Model.ViewModel.ViewModelData)
@@ -16,7 +17,7 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
     
     // MARK: - Global Properties
     var interactor: AuthVipBusinessLogic?
-    var router: (NSObjectProtocol & AuthVipRoutingLogic)?
+    var router: (NSObjectProtocol & AuthVipRoutingLogic & AuthVipDataPassing)?
     
     // MARK: - Local Properties
     private let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Logo"), contentMode: .scaleAspectFit)
@@ -52,6 +53,7 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
         interactor.presenter      = presenter
         presenter.viewController  = viewController
         router.viewController     = viewController
+        router.dataStore          = interactor
     }
     
     // MARK: View lifecycle
@@ -59,8 +61,12 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
         super.viewDidLoad()
         
         setupUI()
+        
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
+        
+        //GIDSignIn.sharedInstance()?.delegate = self
     }
     
     // MARK: - Routing
@@ -72,9 +78,19 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
         router?.routeToLogin()
     }
     
+    @objc private func googleButtonTapped() {
+        GIDSignIn.sharedInstance()?.delegate = self
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     // MARK: - AuthVipDisplayLogic
     func displayData(viewModel: AuthVip.Model.ViewModel.ViewModelData) {
-        
+        switch viewModel {
+        case let .displayAlert(title, message):
+            router?.showAlert(title: title, message: message)
+        }
     }
     
 }
@@ -108,4 +124,13 @@ extension AuthVipViewController {
         }
     }
     
+}
+
+// MARK: - GIDSignInDelegate
+
+extension AuthVipViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        interactor?.makeRequest(request: .googleLogin(user: user, error: error))
+    }
 }

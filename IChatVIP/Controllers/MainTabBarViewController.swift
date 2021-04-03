@@ -11,12 +11,7 @@ class MainTabBarViewController: UITabBarController {
     
     private let currentUser: MUser
     
-    init(currentUser: MUser = MUser(username: "forSwiftUI",
-                                    email: "forSwiftUI",
-                                    description: "forSwiftUI",
-                                    sex: "forSwiftUI",
-                                    avatarStringURL: "forSwiftUI",
-                                    id: "forSwiftUI")) {
+    init(currentUser: MUser) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +26,8 @@ class MainTabBarViewController: UITabBarController {
         let peopleVC = PeopleViewController(nibName: nil, bundle: nil)
         let listVC = ListViewController(nibName: nil, bundle: nil)
         
-        if var peopleDS = peopleVC.router?.dataStore, var listDS = listVC.router?.dataStore {
+        if var peopleDS = peopleVC.router?.dataStore,
+           var listDS = listVC.router?.dataStore {
             peopleDS.currentUser = currentUser
             listDS.currentUser = currentUser
         }

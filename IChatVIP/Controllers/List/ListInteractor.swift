@@ -27,6 +27,13 @@ class ListInteractor: ListBusinessLogic, ListDataStore {
         if service == nil {
             service = ListService()
         }
+        
+        switch request {
+        case .setTitle:
+            if let username = currentUser?.username {
+                presenter?.presentData(response: .presentTitle(username))
+            }
+        }
     }
     
 }

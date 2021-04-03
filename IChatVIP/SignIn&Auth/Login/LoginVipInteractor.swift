@@ -37,22 +37,40 @@ class LoginVipInteractor: LoginVipBusinessLogic, LoginVipDataStore {
                 switch result {
                 case .success(let user):
                     self.user = user
-                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы авторизованы"))
+                    
+                    FirestoreService.shared.getUserData(user: user) { (result) in
+                        switch result {
+                        case .success(let muser):
+                            self.muser = muser
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы авторизованы"))
+                        case .failure(_):
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы"))
+                        }
+                    }
+                    
                 case .failure(let error):
                     self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
                 }
             }
             
-        case .getUserData:
-            if let user = user {
-                FirestoreService.shared.getUserData(user: user) { (result) in
-                    switch result {
-                    case .success(let muser):
-                        self.muser = muser
-                        self.presenter?.presentData(response: .presentMainTabBar)
-                    case .failure(_):
-                        self.presenter?.presentData(response: .presentSetupProfile)
+        case .googleLogin(let user, let error):
+            AuthService.shared.googleLogin(user: user, error: error) { (result) in
+                switch result {
+                case .success(let user):
+                    self.user = user
+                    
+                    FirestoreService.shared.getUserData(user: user) { (result) in
+                        switch result {
+                        case .success(let muser):
+                            self.muser = muser
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы авторизованы"))
+                        case .failure(_):
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы"))
+                        }
                     }
+                    
+                case .failure(let error):
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
                 }
             }
             

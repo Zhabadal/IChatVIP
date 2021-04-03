@@ -35,20 +35,23 @@ class SetupProfileVipInteractor: SetupProfileVipBusinessLogic, SetupProfileVipDa
         }
         
         switch request {
-        case let .saveProfileWith(username, avatarImageString, description, sex):
+        case .setUsernameAndPhoto:
+            presenter?.presentData(response: .presentUsernameAndPhoto(name: user?.displayName, photoUrl: user?.photoURL))
+            
+        case let .saveProfileWith(username, avatarImage, description, sex):
             if let user = user {
                 FirestoreService.shared.saveProfileWith(
                     id: user.uid,
                     email: user.email!,
                     username: username,
-                    avatarImageString: avatarImageString,
+                    avatarImage: avatarImage,
                     description: description,
                     sex: sex
                 ) { (result) in
                     switch result {
                     case .success(let muser):
                         self.muser = muser
-                        self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Приятного общения"))
+                        self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Данные сохранены"))
                     case .failure(let error):
                         self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
                     }

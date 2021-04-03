@@ -18,18 +18,21 @@ enum SetupProfileVip {
     enum Model {
         struct Request {
             enum RequestType {
-                case saveProfileWith(username: String?, avatarImageString: String?, description: String?, sex: String?)
+                case setUsernameAndPhoto
+                case saveProfileWith(username: String?, avatarImage: UIImage?, description: String?, sex: String?)
             }
         }
         
         struct Response {
             enum ResponseType {
+                case presentUsernameAndPhoto(name: String?, photoUrl: URL?)
                 case presentAlert(title: String, message: String)
             }
         }
         
         struct ViewModel {
             enum ViewModelData {
+                case displayUsernameAndPhoto(name: String?, photoUrl: URL?)
                 case displayAlert(title: String, message: String)
             }
         }

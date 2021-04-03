@@ -25,6 +25,7 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
     var dataStore: LoginVipDataStore?
     
     // MARK: Routing
+    
     func routeToParent() {
         let destinationVC = viewController?.presentingViewController as! AuthVipViewController
         navigateToParent(source: viewController!, destination: destinationVC)
@@ -33,8 +34,12 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
     func showAlert(title: String, message: String) {
         if let viewController = viewController {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-                viewController.interactor?.makeRequest(request: .getUserData)
+            let okAction = UIAlertAction(title: "Ok", style: .default) { [unowned self] _ in
+                if self.dataStore?.muser != nil {
+                    self.routeToMainTabBar()
+                } else if self.dataStore?.user != nil {
+                    self.routeToSetupProfile()
+                }
             }
             alertVC.addAction(okAction)
             presentFrom(source: viewController, destination: alertVC)
@@ -60,6 +65,7 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
     }
     
     // MARK: - Navigation
+    
     func navigateToParent(source: LoginVipViewController, destination: AuthVipViewController) {
         source.dismiss(animated: true) {
             destination.router?.routeToSignUp()
@@ -71,6 +77,7 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
     }
     
     // MARK: - Passing data
+    
     private func passDataToDetail(source: LoginVipDataStore, destination: inout SetupProfileVipDataStore) {
         destination.user = source.user
     }

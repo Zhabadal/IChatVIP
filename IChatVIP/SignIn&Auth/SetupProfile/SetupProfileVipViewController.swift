@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol SetupProfileVipDisplayLogic: class {
     func displayData(viewModel: SetupProfileVip.Model.ViewModel.ViewModelData)
@@ -18,11 +19,13 @@ protocol SetupProfileVipDisplayLogic: class {
 
 class SetupProfileVipViewController: UIViewController, SetupProfileVipDisplayLogic {
     
-    // MARK: - Global properties
+    // MARK: - External vars
+    
     var interactor: SetupProfileVipBusinessLogic?
     var router: (NSObjectProtocol & SetupProfileVipRoutingLogic & SetupProfileVipDataPassing)?
     
-    // MARK: - Local properties
+    // MARK: - Internal vars
+    
     let fillImageView = AddPhotoView()
     
     let setupProfileLabel = UILabel(text: "Set up profile!", font: .avenir26())
@@ -35,7 +38,7 @@ class SetupProfileVipViewController: UIViewController, SetupProfileVipDisplayLog
     
     let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .buttonDark())
     
-    // MARK: Object lifecycle
+    // MARK: - Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -47,7 +50,7 @@ class SetupProfileVipViewController: UIViewController, SetupProfileVipDisplayLog
         setup()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     private func setup() {
         let viewController = self
@@ -62,36 +65,66 @@ class SetupProfileVipViewController: UIViewController, SetupProfileVipDisplayLog
         router.dataStore = interactor
     }
     
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interactor?.makeRequest(request: .setUsernameAndPhoto)
         
         view.backgroundColor = .white
         setupConstraints()
         
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+        fillImageView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     @objc func goToChatsButtonTapped() {
         interactor?.makeRequest(
             request: .saveProfileWith(
                 username: fullNameTextFieldView.textField.text,
-                avatarImageString: "nil",
+                avatarImage: fillImageView.circleImageView.image,
                 description: aboutMeTextFieldView.textField.text,
                 sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)
             )
         )
     }
     
+    @objc private func plusButtonTapped() {
+        router?.showImagePicker()
+    }
+    
     // MARK: - SetupProfileVipDisplayLogic
+    
     func displayData(viewModel: SetupProfileVip.Model.ViewModel.ViewModelData) {
         switch viewModel {
+        case let .displayUsernameAndPhoto(name, photoUrl):
+            if let username = name {
+                fullNameTextFieldView.textField.text = username
+            }
+            
+            if let url = photoUrl {
+                fillImageView.circleImageView.sd_setImage(with: url)
+            }
+            
         case let .displayAlert(title, message):
             router?.showAlert(title: title, message: message)
         }
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension SetupProfileVipViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else { return }
+        fillImageView.circleImageView.image = image
+    }
+}
+
+// MARK: - Constraints setup
 
 extension SetupProfileVipViewController {
     

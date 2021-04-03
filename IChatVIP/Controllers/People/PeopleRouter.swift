@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PeopleRoutingLogic {
-    func showAlert(title: String?, message: String)
+    func showAlert(title: String?, message: String, type: People.AlertType)
     func routeToAuth()
 }
 
@@ -24,15 +24,24 @@ class PeopleRouter: NSObject, PeopleRoutingLogic, PeopleDataPassing {
     
     // MARK: Routing
     
-    func showAlert(title: String?, message: String) {
+    func showAlert(title: String?, message: String, type: People.AlertType) {
         if let viewController = viewController {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
-                viewController.interactor?.makeRequest(request: .signOut)
+            
+            switch type {
+            case .signOut:
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
+                    viewController.interactor?.makeRequest(request: .signOut)
+                }
+                alertVC.addAction(cancelAction)
+                alertVC.addAction(signOutAction)
+                
+            case .errorUsersListener:
+                let okAction = UIAlertAction(title: "Ok", style: .default)
+                alertVC.addAction(okAction)
             }
-            alertVC.addAction(cancelAction)
-            alertVC.addAction(signOutAction)
+            
             presentFrom(source: viewController, destination: alertVC)
         }
     }

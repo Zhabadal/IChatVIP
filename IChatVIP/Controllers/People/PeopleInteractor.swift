@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol PeopleBusinessLogic {
     func makeRequest(request: People.Model.Request.RequestType)
@@ -23,6 +24,11 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
     var service: PeopleService?
     
     var currentUser: MUser?
+    private var usersListener: ListenerRegistration?
+    
+    deinit {
+        usersListener?.remove()
+    }
     
     func makeRequest(request: People.Model.Request.RequestType) {
         if service == nil {
@@ -37,6 +43,21 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
             } catch {
                 print("Error signing out: \(error.localizedDescription)")
             }
+            
+        case .setTitle:
+            if let username = currentUser?.username {
+                presenter?.presentData(response: .presentTitle(username))
+            }
+            
+        case .setUsersListener(let users):
+            usersListener = ListenerService.shared.usersObserve(users: users, completion: { (result) in
+                switch result {
+                case .success(let users):
+                    self.presenter?.presentData(response: .presentUsers(users))
+                case .failure(let error):
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .errorUsersListener))
+                }
+            })
         }
     }
     

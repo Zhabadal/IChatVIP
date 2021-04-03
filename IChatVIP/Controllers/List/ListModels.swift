@@ -13,17 +13,17 @@ enum List {
     enum Model {
         struct Request {
             enum RequestType {
-                case some
+                case setTitle
             }
         }
         struct Response {
             enum ResponseType {
-                case some
+                case presentTitle(_ title: String)
             }
         }
         struct ViewModel {
             enum ViewModelData {
-                case some
+                case displayTitle(_ title: String)
             }
         }
     }

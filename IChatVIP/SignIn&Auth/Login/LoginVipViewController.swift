@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 protocol LoginVipDisplayLogic: class {
     func displayData(viewModel: LoginVip.Model.ViewModel.ViewModelData)
@@ -73,6 +74,7 @@ class LoginVipViewController: UIViewController, LoginVipDisplayLogic {
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
     
     @objc private func loginButtonTapped() {
@@ -88,18 +90,19 @@ class LoginVipViewController: UIViewController, LoginVipDisplayLogic {
         router?.routeToParent()
     }
     
+    @objc private func googleButtonTapped() {
+        GIDSignIn.sharedInstance()?.delegate = self
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
     // MARK: - LoginVipDisplayLogic
     
     func displayData(viewModel: LoginVip.Model.ViewModel.ViewModelData) {
         switch viewModel {
         case let .displayAlert(title, message):
             router?.showAlert(title: title, message: message)
-            
-        case .displayMainTabBar:
-            router?.routeToMainTabBar()
-            
-        case .displaySetupProfile:
-            router?.routeToSetupProfile()
         }
     }
     
@@ -139,4 +142,13 @@ extension LoginVipViewController {
         }
     }
     
+}
+
+// MARK: - GIDSignInDelegate
+
+extension LoginVipViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        interactor?.makeRequest(request: .googleLogin(user: user, error: error))
+    }
 }

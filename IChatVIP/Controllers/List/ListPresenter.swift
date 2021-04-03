@@ -17,7 +17,10 @@ class ListPresenter: ListPresentationLogic {
     weak var viewController: ListDisplayLogic?
     
     func presentData(response: List.Model.Response.ResponseType) {
-        
+        switch response {            
+        case .presentTitle(let title):
+            viewController?.displayData(viewModel: .displayTitle(title))
+        }
     }
     
 }

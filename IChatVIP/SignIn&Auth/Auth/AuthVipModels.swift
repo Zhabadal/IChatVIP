@@ -7,25 +7,26 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 enum AuthVip {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case some
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case googleLogin(user: GIDGoogleUser!, error: Error!)
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentAlert(title: String, message: String)
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayAlert(title: String, message: String)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-        case some
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-        case some
-      }
-    }
-  }
-  
+    
 }

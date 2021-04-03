@@ -15,6 +15,7 @@ import UIKit
 protocol SetupProfileVipRoutingLogic {
     func showAlert(title: String, message: String)
     func routeToMainTabBar()
+    func showImagePicker()
 }
 
 protocol SetupProfileVipDataPassing {
@@ -46,6 +47,15 @@ class SetupProfileVipRouter: NSObject, SetupProfileVipRoutingLogic, SetupProfile
             let mainTabBarVC = MainTabBarViewController(currentUser: muser)
             mainTabBarVC.modalPresentationStyle = .fullScreen
             presentFrom(source: viewController, destination: mainTabBarVC)
+        }
+    }
+    
+    func showImagePicker() {
+        if let viewController = viewController {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = viewController
+            imagePickerController.sourceType = .photoLibrary
+            presentFrom(source: viewController, destination: imagePickerController)
         }
     }
     

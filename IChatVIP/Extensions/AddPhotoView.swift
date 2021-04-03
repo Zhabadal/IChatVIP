@@ -9,23 +9,22 @@ import UIKit
 
 class AddPhotoView: UIView {
     
-    let circleView: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
-        return view
+    var circleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = #imageLiteral(resourceName: "avatar")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderWidth = 1
+        return imageView
     }()
     
-    var photoImageView: UIImageView = {
-        let iv = UIImageView(image: #imageLiteral(resourceName: "avatar"))
-        iv.contentMode = .scaleAspectFit
-        return iv
-    }()
-    
-    var plusButton: UIButton = {
+    let plusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let myImage = #imageLiteral(resourceName: "plus")
+        button.setImage(myImage, for: .normal)
         button.tintColor = .buttonDark()
         return button
     }()
@@ -33,32 +32,34 @@ class AddPhotoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        circleView.addSubview(photoImageView)
-        photoImageView.snp.makeConstraints { make in
-            make.size.equalTo(70)
-            make.center.equalToSuperview()
-        }
-        
-        addSubview(circleView)
-        circleView.snp.makeConstraints { make in
-            make.size.equalTo(100)
-            make.top.left.bottom.equalToSuperview()
-        }
-        
+        addSubview(circleImageView)
         addSubview(plusButton)
-        plusButton.snp.makeConstraints { make in
-            make.size.equalTo(30)
-            make.left.equalTo(circleView.snp.right).offset(16)
-            make.right.equalToSuperview()
-            make.centerY.equalToSuperview()
-        }
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            circleImageView.topAnchor.constraint(equalTo: topAnchor),
+            circleImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            circleImageView.widthAnchor.constraint(equalToConstant: 100),
+            circleImageView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        
+        NSLayoutConstraint.activate([
+            plusButton.leadingAnchor.constraint(equalTo: circleImageView.trailingAnchor, constant: 16),
+            plusButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            plusButton.widthAnchor.constraint(equalToConstant: 30),
+            plusButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        bottomAnchor.constraint(equalTo: circleImageView.bottomAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: plusButton.trailingAnchor).isActive = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        circleView.layer.masksToBounds = true
-        circleView.layer.cornerRadius = circleView.frame.width / 2
+        circleImageView.layer.masksToBounds = true
+        circleImageView.layer.cornerRadius = circleImageView.frame.width / 2
     }
     
     required init?(coder: NSCoder) {

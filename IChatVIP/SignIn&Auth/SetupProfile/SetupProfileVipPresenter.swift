@@ -23,6 +23,8 @@ class SetupProfileVipPresenter: SetupProfileVipPresentationLogic {
     
     func presentData(response: SetupProfileVip.Model.Response.ResponseType) {
         switch response {
+        case let .presentUsernameAndPhoto(name, photoUrl):
+            viewController?.displayData(viewModel: .displayUsernameAndPhoto(name: name, photoUrl: photoUrl))
         case let .presentAlert(title, message):
             viewController?.displayData(viewModel: .displayAlert(title: title, message: message))
         }

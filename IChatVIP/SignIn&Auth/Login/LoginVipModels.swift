@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 enum LoginVip {
     
@@ -14,23 +15,19 @@ enum LoginVip {
         struct Request {
             enum RequestType {
                 case loginUser(email: String?, password: String?)
-                case getUserData
+                case googleLogin(user: GIDGoogleUser!, error: Error!)
             }
         }
         
         struct Response {
             enum ResponseType {
                 case presentAlert(title: String, message: String)
-                case presentMainTabBar
-                case presentSetupProfile
             }
         }
         
         struct ViewModel {
             enum ViewModelData {
                 case displayAlert(title: String, message: String)
-                case displayMainTabBar
-                case displaySetupProfile
             }
         }
     }
