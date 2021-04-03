@@ -13,17 +13,17 @@ enum ChatRequest {
     enum Model {
         struct Request {
             enum RequestType {
-                case some
+                case setChatInfo
             }
         }
         struct Response {
             enum ResponseType {
-                case some
+                case presentChatInfo(friendUsername: String, friendAvatarStringURL: String)
             }
         }
         struct ViewModel {
             enum ViewModelData {
-                case some
+                case displayChatInfo(friendUsername: String, friendAvatarURL: URL?)
             }
         }
     }

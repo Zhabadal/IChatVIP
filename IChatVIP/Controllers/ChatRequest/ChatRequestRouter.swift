@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChatRequestRoutingLogic {
-    //func routeToSomewhere()
+    func routeToParent(chatAccepted: Bool)
 }
 
 protocol ChatRequestDataPassing {
@@ -23,19 +23,20 @@ class ChatRequestRouter: NSObject, ChatRequestRoutingLogic, ChatRequestDataPassi
     
     // MARK: Routing
     
-//    func routeToSomewhere() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToSomewhere(source: viewController!, destination: destinationVC)
-//    }
+    func routeToParent(chatAccepted: Bool) {
+        let mainTabBarVC = viewController?.presentingViewController as! MainTabBarViewController
+        let navVC = mainTabBarVC.viewControllers?[1] as! UINavigationController
+        let destinationVC = navVC.topViewController as! ListViewController
+        navigateToParent(source: viewController!, destination: destinationVC, chatAccepted: chatAccepted)
+    }
 
     // MARK: Navigation
     
-//    func navigateToSomewhere(source: ChatRequestViewController, destination: SomewhereViewController) {
-//        source.show(destination, sender: nil)
-//    }
+    func navigateToParent(source: ChatRequestViewController, destination: ListViewController, chatAccepted: Bool) {
+        source.dismiss(animated: true) {
+            destination.interactor?.makeRequest(request: chatAccepted ? .changeChatToActive : .deleteWaitingChat)
+        }
+    }
 
     // MARK: Passing data
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProfileRoutingLogic {
-    //func routeToSomewhere()
+    func routeToParent()
 }
 
 protocol ProfileDataPassing {
@@ -23,24 +23,27 @@ class ProfileRouter: NSObject, ProfileRoutingLogic, ProfileDataPassing {
     
     // MARK: Routing
     
-//    func routeToSomewhere() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToSomewhere(source: viewController!, destination: destinationVC)
-//    }
+    func routeToParent() {
+        let mainTabBarVC = viewController?.presentingViewController as! MainTabBarViewController
+        let navVC = mainTabBarVC.viewControllers?[0] as! UINavigationController
+        let destinationVC = navVC.topViewController as! PeopleViewController
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToParent(source: dataStore!, destination: &destinationDS)
+        navigateToParent(source: viewController!, destination: destinationVC)
+    }
 
     // MARK: Navigation
     
-//    func navigateToSomewhere(source: ProfileViewController, destination: SomewhereViewController) {
-//        source.show(destination, sender: nil)
-//    }
+    func navigateToParent(source: ProfileViewController, destination: PeopleViewController) {
+        source.dismiss(animated: true) {
+            destination.interactor?.makeRequest(request: .createWaitingChat)
+        }
+    }
 
     // MARK: Passing data
     
-//    func passDataToSomewhere(source: ProfileDataStore, destination: inout SomewhereDataStore) {
-//        destination.name = source.name
-//    }
+    func passDataToParent(source: ProfileDataStore, destination: inout PeopleDataStore) {
+        destination.message = source.message
+    }
 
 }

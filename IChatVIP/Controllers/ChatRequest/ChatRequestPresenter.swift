@@ -17,7 +17,10 @@ class ChatRequestPresenter: ChatRequestPresentationLogic {
     weak var viewController: ChatRequestDisplayLogic?
     
     func presentData(response: ChatRequest.Model.Response.ResponseType) {
-        
+        switch response {
+        case .presentChatInfo(let friendUsername, let friendAvatarStringURL):
+            viewController?.displayData(viewModel: .displayChatInfo(friendUsername: friendUsername, friendAvatarURL: URL(string: friendAvatarStringURL)))
+        }
     }
     
 }

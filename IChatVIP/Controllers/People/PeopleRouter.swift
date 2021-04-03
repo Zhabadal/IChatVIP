@@ -11,6 +11,7 @@ import UIKit
 protocol PeopleRoutingLogic {
     func showAlert(title: String?, message: String, type: People.AlertType)
     func routeToAuth()
+    func routeToProfile()
 }
 
 protocol PeopleDataPassing {
@@ -37,7 +38,7 @@ class PeopleRouter: NSObject, PeopleRoutingLogic, PeopleDataPassing {
                 alertVC.addAction(cancelAction)
                 alertVC.addAction(signOutAction)
                 
-            case .errorUsersListener:
+            case .simple:
                 let okAction = UIAlertAction(title: "Ok", style: .default)
                 alertVC.addAction(okAction)
             }
@@ -59,28 +60,23 @@ class PeopleRouter: NSObject, PeopleRoutingLogic, PeopleDataPassing {
         keyWindow?.rootViewController = AuthVipViewController()
     }
     
-//    func routeToSomewhere() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToSomewhere(source: viewController!, destination: destinationVC)
-//    }
-
+    func routeToProfile() {
+        let destinationVC = ProfileViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+        presentFrom(source: viewController!, destination: destinationVC)
+    }
+    
     // MARK: Navigation
     
     private func presentFrom(source: UIViewController, destination: UIViewController) {
         source.present(destination, animated: true)
     }
     
-//    func navigateToSomewhere(source: PeopleViewController, destination: SomewhereViewController) {
-//        source.show(destination, sender: nil)
-//    }
-
     // MARK: Passing data
     
-//    func passDataToSomewhere(source: PeopleDataStore, destination: inout SomewhereDataStore) {
-//        destination.name = source.name
-//    }
+    func passDataToSomewhere(source: PeopleDataStore, destination: inout ProfileDataStore) {
+        destination.user = source.selectedUser
+    }
 
 }

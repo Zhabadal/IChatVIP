@@ -13,7 +13,8 @@ protocol ProfileBusinessLogic {
 }
 
 protocol ProfileDataStore {
-    //var name: String { get set }
+    var user: MUser! { get set }
+    var message: String? { get set }
 }
 
 class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
@@ -21,11 +22,22 @@ class ProfileInteractor: ProfileBusinessLogic, ProfileDataStore {
     var presenter: ProfilePresentationLogic?
     var service: ProfileService?
     
-    //var name: String = ""
+    var user: MUser!
+    var message: String?
     
     func makeRequest(request: Profile.Model.Request.RequestType) {
         if service == nil {
             service = ProfileService()
+        }
+        
+        switch request {
+        case .setUserInfo:
+            presenter?.presentData(response: .presentUserInfo(username: user.username, description: user.description, avatarStringUrl: user.avatarStringURL))
+            
+        case .sendMessage(let text):
+            guard let message = text, message != "" else { return }
+            self.message = message
+            presenter?.presentData(response: .presentParent)
         }
     }
     

@@ -12,7 +12,7 @@ enum People {
     
     enum AlertType {
         case signOut
-        case errorUsersListener
+        case simple
     }
     
     enum Model {
@@ -21,6 +21,8 @@ enum People {
                 case signOut
                 case setTitle
                 case setUsersListener(users: [MUser])
+                case userSelected(user: MUser)
+                case createWaitingChat
             }
         }
         struct Response {
@@ -29,6 +31,7 @@ enum People {
                 case presentTitle(_ title: String)
                 case presentUsers(_ users: [MUser])
                 case presentAlert(title: String, message: String, type: AlertType)
+                case presentProfile
             }
         }
         struct ViewModel {
@@ -37,6 +40,7 @@ enum People {
                 case displayTitle(_ title: String)
                 case displayUsers(_ users: [MUser])
                 case displayAlert(title: String, message: String, type: AlertType)
+                case displayProfile
             }
         }
     }

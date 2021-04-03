@@ -17,9 +17,21 @@ class ListPresenter: ListPresentationLogic {
     weak var viewController: ListDisplayLogic?
     
     func presentData(response: List.Model.Response.ResponseType) {
-        switch response {            
+        switch response {
         case .presentTitle(let title):
             viewController?.displayData(viewModel: .displayTitle(title))
+        
+        case .presentChatRequest:
+            viewController?.displayData(viewModel: .displayChatRequest)
+            
+        case .presentWaitingChats(let chats):
+            viewController?.displayData(viewModel: .displayWaitingChats(chats))
+            
+        case .presentActiveChats(let chats):
+            viewController?.displayData(viewModel: .displayActiveChats(chats))
+            
+        case .presentAlert(let title, let message):
+            viewController?.displayData(viewModel: .displayAlert(title: title, message: message))
         }
     }
     

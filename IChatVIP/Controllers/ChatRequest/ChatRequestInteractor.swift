@@ -13,7 +13,7 @@ protocol ChatRequestBusinessLogic {
 }
 
 protocol ChatRequestDataStore {
-    //var name: String { get set }
+    var chat: MChat! { get set }
 }
 
 class ChatRequestInteractor: ChatRequestBusinessLogic, ChatRequestDataStore {
@@ -21,11 +21,16 @@ class ChatRequestInteractor: ChatRequestBusinessLogic, ChatRequestDataStore {
     var presenter: ChatRequestPresentationLogic?
     var service: ChatRequestService?
     
-    //var name: String = ""
+    var chat: MChat!
     
     func makeRequest(request: ChatRequest.Model.Request.RequestType) {
         if service == nil {
             service = ChatRequestService()
+        }
+        
+        switch request {
+        case .setChatInfo:
+            presenter?.presentData(response: .presentChatInfo(friendUsername: chat.friendUsername, friendAvatarStringURL: chat.friendAvatarStringURL))
         }
     }
     

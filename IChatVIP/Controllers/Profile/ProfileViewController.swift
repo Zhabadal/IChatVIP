@@ -62,6 +62,8 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        interactor?.makeRequest(request: .setUserInfo)
+        
         view.backgroundColor = .white
         constomizeElements()
         setupConstraints()
@@ -70,7 +72,15 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     // MARK: - ProfileDisplayLogic
     
     func displayData(viewModel: Profile.Model.ViewModel.ViewModelData) {
-        
+        switch viewModel {
+        case let .displayUserInfo(username, description, avatarUrl):
+            nameLabel.text = username
+            aboutMeLabel.text = description
+            imageView.sd_setImage(with: avatarUrl)
+            
+        case .displayParent:
+            router?.routeToParent()
+        }
     }
     
     // MARK: - Internal methods
@@ -91,7 +101,7 @@ class ProfileViewController: UIViewController, ProfileDisplayLogic {
     }
     
     @objc private func sendMessage() {
-        print(#function)
+        interactor?.makeRequest(request: .sendMessage(text: myTextField.text))
     }
     
 }

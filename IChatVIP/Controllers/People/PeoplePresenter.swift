@@ -30,6 +30,9 @@ class PeoplePresenter: PeoplePresentationLogic {
             
         case .presentAlert( let title, let message, let type):
             viewController?.displayData(viewModel: .displayAlert(title: title, message: message, type: type))
+            
+        case .presentProfile:
+            viewController?.displayData(viewModel: .displayProfile)
         }
     }
     

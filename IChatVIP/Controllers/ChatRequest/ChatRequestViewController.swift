@@ -60,9 +60,14 @@ class ChatRequestViewController: UIViewController, ChatRequestDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        interactor?.makeRequest(request: .setChatInfo)
+        
         view.backgroundColor = .mainWhite()
         customizeElements()
         setupConstraints()
+        
+        denyButton.addTarget(self, action: #selector(denyButtonTapped), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(acceptButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,10 +76,22 @@ class ChatRequestViewController: UIViewController, ChatRequestDisplayLogic {
         self.acceptButton.applyGradients(cornerRadius: 10)
     }
     
+    @objc private func denyButtonTapped() {
+        router?.routeToParent(chatAccepted: false)
+    }
+    
+    @objc private func acceptButtonTapped() {
+        router?.routeToParent(chatAccepted: true)
+    }
+    
     // MARK: - ChatRequestDisplayLogic
     
     func displayData(viewModel: ChatRequest.Model.ViewModel.ViewModelData) {
-        
+        switch viewModel {
+        case .displayChatInfo(let friendUsername, let friendAvatarURL):
+            nameLabel.text = friendUsername
+            imageView.sd_setImage(with: friendAvatarURL)
+        }
     }
     
     private func customizeElements() {

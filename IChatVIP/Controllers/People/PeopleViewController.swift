@@ -99,6 +99,9 @@ class PeopleViewController: UIViewController, PeopleDisplayLogic {
             
         case .displayAlert(let title, let message, let type):
             router?.showAlert(title: title, message: message, type: type)
+            
+        case .displayProfile:
+            router?.routeToProfile()
         }
     }
     
@@ -113,6 +116,8 @@ class PeopleViewController: UIViewController, PeopleDisplayLogic {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
         
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
+        
+        collectionView.delegate = self
     }
     
     private func setupSearchBar() {
@@ -223,7 +228,17 @@ extension PeopleViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
+extension PeopleViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = dataSource.itemIdentifier(for: indexPath) else { return }
+        interactor?.makeRequest(request: .userSelected(user: user))
+    }
+}
+
 // MARK: - UISearchBarDelegate
+
 extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)

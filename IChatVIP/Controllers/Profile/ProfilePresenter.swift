@@ -17,7 +17,13 @@ class ProfilePresenter: ProfilePresentationLogic {
     weak var viewController: ProfileDisplayLogic?
     
     func presentData(response: Profile.Model.Response.ResponseType) {
-        
+        switch response {
+        case let .presentUserInfo(username, description, avatarStringUrl):
+            viewController?.displayData(viewModel: .displayUserInfo(username: username, description: description, avatarUrl: URL(string: avatarStringUrl)))
+            
+        case .presentParent:
+            viewController?.displayData(viewModel: .displayParent)
+        }
     }
     
 }

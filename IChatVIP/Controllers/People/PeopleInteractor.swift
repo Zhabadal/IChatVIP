@@ -16,6 +16,8 @@ protocol PeopleBusinessLogic {
 
 protocol PeopleDataStore {
     var currentUser: MUser? { get set }
+    var selectedUser: MUser? { get set }
+    var message: String? { get set }
 }
 
 class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
@@ -24,6 +26,9 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
     var service: PeopleService?
     
     var currentUser: MUser?
+    var selectedUser: MUser?
+    var message: String?
+    
     private var usersListener: ListenerRegistration?
     
     deinit {
@@ -55,9 +60,24 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
                 case .success(let users):
                     self.presenter?.presentData(response: .presentUsers(users))
                 case .failure(let error):
-                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .errorUsersListener))
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .simple))
                 }
             })
+            
+        case .userSelected(let user):
+            selectedUser = user
+            presenter?.presentData(response: .presentProfile)
+            
+        case .createWaitingChat:
+            FirestoreService.shared.createWaitingChat(message: message!, receiver: selectedUser!) { (result) in
+                switch result {
+                case .success(_):
+                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Ваше сообщение для \(self.selectedUser!.username) было отправлено", type: .simple))
+                case .failure(let error):
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .simple))
+                }
+            }
+            
         }
     }
     

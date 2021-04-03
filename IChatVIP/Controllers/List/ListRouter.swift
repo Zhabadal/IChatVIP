@@ -9,38 +9,47 @@
 import UIKit
 
 protocol ListRoutingLogic {
-    //func routeToSomewhere()
+    func showAlert(title: String?, message: String)
+    func routeToChatRequest()
 }
 
 protocol ListDataPassing {
     var dataStore: ListDataStore? { get }
 }
 
-class ListRouter: NSObject, ListRoutingLogic, ListDataPassing {
+class ListRouter: NSObject, ListRoutingLogic, ListDataPassing {    
     
     weak var viewController: ListViewController?
     var dataStore: ListDataStore?
     
     // MARK: Routing
     
-//    func routeToSomewhere() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToSomewhere(source: viewController!, destination: destinationVC)
-//    }
-
+    func showAlert(title: String?, message: String) {
+        if let viewController = viewController {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default)
+            alertVC.addAction(okAction)
+            presentFrom(source: viewController, destination: alertVC)
+        }
+    }
+    
+    func routeToChatRequest() {
+        let destinationVC = ChatRequestViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToChatRequest(source: dataStore!, destination: &destinationDS)
+        presentFrom(source: viewController!, destination: destinationVC)
+    }
+    
     // MARK: Navigation
     
-//    func navigateToSomewhere(source: ListViewController, destination: SomewhereViewController) {
-//        source.show(destination, sender: nil)
-//    }
-
+    private func presentFrom(source: UIViewController, destination: UIViewController) {
+        source.present(destination, animated: true)
+    }
+    
     // MARK: Passing data
     
-//    func passDataToSomewhere(source: ListDataStore, destination: inout SomewhereDataStore) {
-//        destination.name = source.name
-//    }
+    func passDataToChatRequest(source: ListDataStore, destination: inout ChatRequestDataStore) {
+        destination.chat = source.chat
+    }
 
 }

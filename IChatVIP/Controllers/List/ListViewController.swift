@@ -24,8 +24,8 @@ class ListViewController: UIViewController, ListDisplayLogic {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, MChat>?
     
-    private var activeChats = [MChat]()
     private var waitingChats = [MChat]()
+    private var activeChats = [MChat]()
     
     enum Section: Int, CaseIterable {
         case waitingChats
@@ -80,6 +80,8 @@ class ListViewController: UIViewController, ListDisplayLogic {
         
         createDataSource()
         reloadData()
+        
+        interactor?.makeRequest(request: .setChatsObservers(waitingChats: waitingChats, activeChats: activeChats))
     }
     
     // MARK: - ListDisplayLogic
@@ -88,6 +90,20 @@ class ListViewController: UIViewController, ListDisplayLogic {
         switch viewModel {
         case .displayTitle(let title):
             navigationItem.title = title
+        
+        case .displayChatRequest:
+            router?.routeToChatRequest()
+            
+        case .displayWaitingChats(let chats):
+            waitingChats = chats
+            reloadData()
+            
+        case .displayActiveChats(let chats):
+            activeChats = chats
+            reloadData()
+            
+        case .displayAlert(let title, let message):
+            router?.showAlert(title: title, message: message)
         }
     }
     
@@ -140,11 +156,11 @@ extension ListViewController {
             }
             
             switch section {
-            case .activeChats:
-                return self.configure(collectionView: collectionView, cellType: ActiveChatCell.self, with: chat, for: indexPath)
-                
             case .waitingChats:
                 return self.configure(collectionView: collectionView, cellType: WaitingChatCell.self, with: chat, for: indexPath)
+            
+            case .activeChats:
+                return self.configure(collectionView: collectionView, cellType: ActiveChatCell.self, with: chat, for: indexPath)
             }
         })
         
@@ -247,16 +263,14 @@ extension ListViewController: UICollectionViewDelegate {
         guard let chat = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         guard let section = Section(rawValue: indexPath.section) else { return }
         
-        print(#function)
-        
-//        switch section {
-//        case .waitingChats:
-//            let chatRequestVC = ChatRequestViewController(chat: chat)
-//            chatRequestVC.delegate = self
-//            present(chatRequestVC, animated: true)
-//        case .activeChats:
-//            let chatsVC = ChatsViewController(user: currentUser, chat: chat)
-//            navigationController?.pushViewController(chatsVC, animated: true)
-//        }
+        switch section {
+        case .waitingChats:
+            interactor?.makeRequest(request: .chatSelected(chat: chat))
+            
+        case .activeChats:
+            print("activeChats")
+            //let chatsVC = ChatsViewController(user: currentUser, chat: chat)
+            //navigationController?.pushViewController(chatsVC, animated: true)
+        }
     }
 }

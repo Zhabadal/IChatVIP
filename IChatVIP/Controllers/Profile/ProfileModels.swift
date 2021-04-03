@@ -13,17 +13,20 @@ enum Profile {
     enum Model {
         struct Request {
             enum RequestType {
-                case some
+                case setUserInfo
+                case sendMessage(text: String?)
             }
         }
         struct Response {
             enum ResponseType {
-                case some
+                case presentUserInfo(username: String, description: String, avatarStringUrl: String)
+                case presentParent
             }
         }
         struct ViewModel {
             enum ViewModelData {
-                case some
+                case displayUserInfo(username: String, description: String, avatarUrl: URL?)
+                case displayParent
             }
         }
     }
