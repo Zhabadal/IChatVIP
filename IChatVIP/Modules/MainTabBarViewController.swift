@@ -23,11 +23,10 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let peopleVC = PeopleViewController(nibName: nil, bundle: nil)
-        let listVC = ListViewController(nibName: nil, bundle: nil)
+        let peopleVC = PeopleViewController()
+        let listVC = ListViewController()
         
-        if var peopleDS = peopleVC.router?.dataStore,
-           var listDS = listVC.router?.dataStore {
+        if var peopleDS = peopleVC.router?.dataStore, var listDS = listVC.router?.dataStore {
             peopleDS.currentUser = currentUser
             listDS.currentUser = currentUser
         }

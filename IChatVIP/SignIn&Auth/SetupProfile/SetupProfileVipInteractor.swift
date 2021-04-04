@@ -18,7 +18,7 @@ protocol SetupProfileVipBusinessLogic {
 }
 
 protocol SetupProfileVipDataStore {
-    var user: User? { get set }
+    var user: User! { get set }
     var muser: MUser? { get set }
 }
 
@@ -26,7 +26,7 @@ class SetupProfileVipInteractor: SetupProfileVipBusinessLogic, SetupProfileVipDa
     var presenter: SetupProfileVipPresentationLogic?
     var worker: SetupProfileVipWorker?
     
-    var user: User?
+    var user: User!
     var muser: MUser?
     
     func makeRequest(request: SetupProfileVip.Model.Request.RequestType) {
@@ -36,25 +36,23 @@ class SetupProfileVipInteractor: SetupProfileVipBusinessLogic, SetupProfileVipDa
         
         switch request {
         case .setUsernameAndPhoto:
-            presenter?.presentData(response: .presentUsernameAndPhoto(name: user?.displayName, photoUrl: user?.photoURL))
+            presenter?.presentData(response: .presentUsernameAndPhoto(name: user.displayName, photoUrl: user.photoURL))
             
         case let .saveProfileWith(username, avatarImage, description, sex):
-            if let user = user {
-                FirestoreService.shared.saveProfileWith(
-                    id: user.uid,
-                    email: user.email!,
-                    username: username,
-                    avatarImage: avatarImage,
-                    description: description,
-                    sex: sex
-                ) { (result) in
-                    switch result {
-                    case .success(let muser):
-                        self.muser = muser
-                        self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Данные сохранены"))
-                    case .failure(let error):
-                        self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
-                    }
+            FirestoreService.shared.saveProfileWith(
+                id: user.uid,
+                email: user.email!,
+                username: username,
+                avatarImage: avatarImage,
+                description: description,
+                sex: sex
+            ) { (result) in
+                switch result {
+                case .success(let muser):
+                    self.muser = muser
+                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Данные сохранены", type: .profileSaved))
+                case .failure(let error):
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .other))
                 }
             }
         }

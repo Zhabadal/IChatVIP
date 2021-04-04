@@ -101,8 +101,8 @@ class LoginVipViewController: UIViewController, LoginVipDisplayLogic {
     
     func displayData(viewModel: LoginVip.Model.ViewModel.ViewModelData) {
         switch viewModel {
-        case let .displayAlert(title, message):
-            router?.showAlert(title: title, message: message)
+        case let .displayAlert(title, message, type):
+            router?.showAlert(title: title, message: message, type: type)
         }
     }
     

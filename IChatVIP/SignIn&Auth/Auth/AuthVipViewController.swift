@@ -65,8 +65,6 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
-        
-        //GIDSignIn.sharedInstance()?.delegate = self
     }
     
     // MARK: - Routing
@@ -88,8 +86,8 @@ class AuthVipViewController: UIViewController, AuthVipDisplayLogic {
     // MARK: - AuthVipDisplayLogic
     func displayData(viewModel: AuthVip.Model.ViewModel.ViewModelData) {
         switch viewModel {
-        case let .displayAlert(title, message):
-            router?.showAlert(title: title, message: message)
+        case let .displayAlert(title, message, type):
+            router?.showAlert(title: title, message: message, type: type)
         }
     }
     

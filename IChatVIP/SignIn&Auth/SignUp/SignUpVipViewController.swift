@@ -90,8 +90,8 @@ class SignUpVipViewController: UIViewController, SignUpVipDisplayLogic {
     // MARK: - SignUpVipDisplayLogic
     func displayData(viewModel: SignUpVip.Model.ViewModel.ViewModelData) {
         switch viewModel {
-        case let .displayAlert(title, message):
-            router?.showAlert(title: title, message: message)
+        case let .displayAlert(title, message, type):
+            router?.showAlert(title: title, message: message, type: type)
         }
     }
     

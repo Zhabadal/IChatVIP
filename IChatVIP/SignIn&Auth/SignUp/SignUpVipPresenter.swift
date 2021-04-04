@@ -17,8 +17,8 @@ class SignUpVipPresenter: SignUpVipPresentationLogic {
     
     func presentData(response: SignUpVip.Model.Response.ResponseType) {
         switch response {
-        case let .presentAlert(title, message):
-            viewController?.displayData(viewModel: .displayAlert(title: title, message: message))
+        case let .presentAlert(title, message, type):
+            viewController?.displayData(viewModel: .displayAlert(title: title, message: message, type: type))
         }
     }
     

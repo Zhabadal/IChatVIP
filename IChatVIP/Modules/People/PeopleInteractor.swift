@@ -15,7 +15,7 @@ protocol PeopleBusinessLogic {
 }
 
 protocol PeopleDataStore {
-    var currentUser: MUser? { get set }
+    var currentUser: MUser! { get set }
     var selectedUser: MUser? { get set }
     var message: String? { get set }
 }
@@ -25,7 +25,7 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
     var presenter: PeoplePresentationLogic?
     var service: PeopleService?
     
-    var currentUser: MUser?
+    var currentUser: MUser!
     var selectedUser: MUser?
     var message: String?
     
@@ -50,9 +50,7 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
             }
             
         case .setTitle:
-            if let username = currentUser?.username {
-                presenter?.presentData(response: .presentTitle(username))
-            }
+            presenter?.presentData(response: .presentTitle(currentUser!.username))
             
         case .setUsersListener(let users):
             usersListener = ListenerService.shared.usersObserve(users: users, completion: { (result) in
@@ -60,7 +58,7 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
                 case .success(let users):
                     self.presenter?.presentData(response: .presentUsers(users))
                 case .failure(let error):
-                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .simple))
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .other))
                 }
             })
             
@@ -72,9 +70,9 @@ class PeopleInteractor: PeopleBusinessLogic, PeopleDataStore {
             FirestoreService.shared.createWaitingChat(message: message!, receiver: selectedUser!) { (result) in
                 switch result {
                 case .success(_):
-                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Ваше сообщение для \(self.selectedUser!.username) было отправлено", type: .simple))
+                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Ваше сообщение для \(self.selectedUser!.username) было отправлено", type: .other))
                 case .failure(let error):
-                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .simple))
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .other))
                 }
             }
             

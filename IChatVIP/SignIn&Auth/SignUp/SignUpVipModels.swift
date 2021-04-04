@@ -10,6 +10,11 @@ import UIKit
 
 enum SignUpVip {
     
+    enum AlertType {
+        case registered
+        case other
+    }
+    
     enum Model {
         struct Request {
             enum RequestType {
@@ -19,13 +24,13 @@ enum SignUpVip {
         
         struct Response {
             enum ResponseType {
-                case presentAlert(title: String, message: String)
+                case presentAlert(title: String, message: String, type: AlertType)
             }
         }
         
         struct ViewModel {
             enum ViewModelData {
-                case displayAlert(title: String, message: String)
+                case displayAlert(title: String, message: String, type: AlertType)
             }
         }
     }

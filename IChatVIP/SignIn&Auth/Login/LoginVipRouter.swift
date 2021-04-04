@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginVipRoutingLogic {
     func routeToParent()
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String, type: LoginVip.AlertType)
     func routeToMainTabBar()
     func routeToSetupProfile()
 }
@@ -31,37 +31,33 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
         navigateToParent(source: viewController!, destination: destinationVC)
     }
     
-    func showAlert(title: String, message: String) {
-        if let viewController = viewController {
-            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { [unowned self] _ in
-                if self.dataStore?.muser != nil {
-                    self.routeToMainTabBar()
-                } else if self.dataStore?.user != nil {
-                    self.routeToSetupProfile()
-                }
+    func showAlert(title: String, message: String, type: LoginVip.AlertType) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            switch type {
+            case .authorized:
+                self.routeToMainTabBar()
+            case .registered:
+                self.routeToSetupProfile()
+            case .other:
+                break
             }
-            alertVC.addAction(okAction)
-            presentFrom(source: viewController, destination: alertVC)
         }
+        alertVC.addAction(okAction)
+        presentFrom(source: viewController!, destination: alertVC)
     }
     
     func routeToMainTabBar() {
-        if let viewController = viewController, let homeDS = dataStore, let muser = homeDS.muser {
-            let mainTabBarVC = MainTabBarViewController(currentUser: muser)
-            mainTabBarVC.modalPresentationStyle = .fullScreen
-            presentFrom(source: viewController, destination: mainTabBarVC)
-        }
+        let mainTabBarVC = MainTabBarViewController(currentUser: dataStore!.muser!)
+        mainTabBarVC.modalPresentationStyle = .fullScreen
+        presentFrom(source: viewController!, destination: mainTabBarVC)
     }
     
     func routeToSetupProfile() {
-        if let viewController = viewController, let homeDS = dataStore {
-            let detailVC = SetupProfileVipViewController(nibName: nil, bundle: nil)
-            if var detailDS = detailVC.router?.dataStore {
-                passDataToDetail(source: homeDS, destination: &detailDS)
-                presentFrom(source: viewController, destination: detailVC)
-            }
-        }
+        let destinationVC = SetupProfileVipViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToSetupProfile(source: dataStore!, destination: &destinationDS)
+        presentFrom(source: viewController!, destination: destinationVC)
     }
     
     // MARK: - Navigation
@@ -78,7 +74,7 @@ class LoginVipRouter: NSObject, LoginVipRoutingLogic, LoginVipDataPassing {
     
     // MARK: - Passing data
     
-    private func passDataToDetail(source: LoginVipDataStore, destination: inout SetupProfileVipDataStore) {
+    private func passDataToSetupProfile(source: LoginVipDataStore, destination: inout SetupProfileVipDataStore) {
         destination.user = source.user
     }
     

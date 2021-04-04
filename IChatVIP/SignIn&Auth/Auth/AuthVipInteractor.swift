@@ -43,14 +43,14 @@ class AuthVipInteractor: AuthVipBusinessLogic, AuthVipDataStore {
                         switch result {
                         case .success(let muser):
                             self.muser = muser
-                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы авторизованы"))
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы авторизованы", type: .authorized))
                         case .failure(_):
-                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы"))
+                            self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы", type: .registered))
                         }
                     }
                     
                 case .failure(let error):
-                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .other))
                 }
             }
         }

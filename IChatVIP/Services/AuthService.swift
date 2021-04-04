@@ -17,7 +17,6 @@ class AuthService {
     private let auth = Auth.auth()
     
     func register(email: String?, password: String?, confirmPassword: String?, completion: @escaping (Result<User, Error>) -> Void) {
-        
         guard Validators.isFilled(email: email, password: password, confirmPassword: confirmPassword) else {
             completion(.failure(AuthError.notFilled))
             return
@@ -44,7 +43,6 @@ class AuthService {
     }
     
     func login(email: String?, password: String?, completion: @escaping (Result<User, Error>) -> Void) {
-        
         guard let email = email, !email.isEmpty,
               let password = password, !password.isEmpty else {
             completion(.failure(AuthError.notFilled))
@@ -62,7 +60,6 @@ class AuthService {
     }
     
     func googleLogin(user: GIDGoogleUser!, error: Error!, completion: @escaping (Result<User, Error>) -> Void) {
-        
         if let error = error {
             completion(.failure(error))
             return
@@ -79,9 +76,6 @@ class AuthService {
             
             completion(.success(result.user))
         }
-        
     }
-    
-    
     
 }

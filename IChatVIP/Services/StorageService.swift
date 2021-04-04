@@ -16,15 +16,15 @@ class StorageService {
     let storageRef = Storage.storage().reference()
     
     private var avatarsRef: StorageReference {
-        return storageRef.child("avatars")
+        storageRef.child("avatars")
     }
     
     private var chatsRef: StorageReference {
-        return storageRef.child("chats")
+        storageRef.child("chats")
     }
     
     private var currentUserId: String {
-        return Auth.auth().currentUser!.uid
+        Auth.auth().currentUser!.uid
     }
     
     func upload(photo: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {

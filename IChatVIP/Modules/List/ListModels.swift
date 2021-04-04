@@ -10,12 +10,17 @@ import UIKit
 
 enum List {
     
+    enum ChatType {
+        case waitingChat
+        case activeChat
+    }
+    
     enum Model {
         struct Request {
             enum RequestType {
                 case setTitle
                 case setChatsObservers(waitingChats: [MChat], activeChats: [MChat])
-                case chatSelected(chat: MChat)
+                case chatSelected(chat: MChat, type: ChatType)
                 case changeChatToActive
                 case deleteWaitingChat
             }
@@ -24,6 +29,7 @@ enum List {
             enum ResponseType {
                 case presentTitle(_ title: String)
                 case presentChatRequest
+                case presentChat
                 case presentWaitingChats(_ chats: [MChat])
                 case presentActiveChats(_ chats: [MChat])
                 case presentAlert(title: String, message: String)
@@ -33,6 +39,7 @@ enum List {
             enum ViewModelData {
                 case displayTitle(_ title: String)
                 case displayChatRequest
+                case displayChat
                 case displayWaitingChats(_ chats: [MChat])
                 case displayActiveChats(_ chats: [MChat])
                 case displayAlert(title: String, message: String)

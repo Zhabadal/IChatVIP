@@ -13,7 +13,7 @@
 import UIKit
 
 protocol SetupProfileVipRoutingLogic {
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String, type: SetupProfileVip.AlertType)
     func routeToMainTabBar()
     func showImagePicker()
 }
@@ -29,34 +29,31 @@ class SetupProfileVipRouter: NSObject, SetupProfileVipRoutingLogic, SetupProfile
     
     // MARK: Routing
     
-    func showAlert(title: String, message: String) {
-        if let viewController = viewController {
-            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
-                if self?.dataStore?.muser != nil {
-                    self?.routeToMainTabBar()
-                }
+    func showAlert(title: String, message: String, type: SetupProfileVip.AlertType) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            switch type {
+            case .profileSaved:
+                self.routeToMainTabBar()
+            case .other:
+                break
             }
-            alertVC.addAction(okAction)
-            presentFrom(source: viewController, destination: alertVC)
         }
+        alertVC.addAction(okAction)
+        presentFrom(source: viewController!, destination: alertVC)
     }
     
     func routeToMainTabBar() {
-        if let viewController = viewController, let homeDS = dataStore, let muser = homeDS.muser {
-            let mainTabBarVC = MainTabBarViewController(currentUser: muser)
-            mainTabBarVC.modalPresentationStyle = .fullScreen
-            presentFrom(source: viewController, destination: mainTabBarVC)
-        }
+        let mainTabBarVC = MainTabBarViewController(currentUser: dataStore!.muser!)
+        mainTabBarVC.modalPresentationStyle = .fullScreen
+        presentFrom(source: viewController!, destination: mainTabBarVC)
     }
     
     func showImagePicker() {
-        if let viewController = viewController {
-            let imagePickerController = UIImagePickerController()
-            imagePickerController.delegate = viewController
-            imagePickerController.sourceType = .photoLibrary
-            presentFrom(source: viewController, destination: imagePickerController)
-        }
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = viewController
+        imagePickerController.sourceType = .photoLibrary
+        presentFrom(source: viewController!, destination: imagePickerController)
     }
     
     // MARK: Navigation

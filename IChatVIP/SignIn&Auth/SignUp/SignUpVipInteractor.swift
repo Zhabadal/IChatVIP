@@ -35,9 +35,9 @@ class SignUpVipInteractor: SignUpVipBusinessLogic, SignUpVipDataStore {
                 switch result {
                 case .success(let user):
                     self.user = user
-                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы"))
+                    self.presenter?.presentData(response: .presentAlert(title: "Успешно", message: "Вы зарегистрированы", type: .registered))
                 case .failure(let error):
-                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription))
+                    self.presenter?.presentData(response: .presentAlert(title: "Ошибка", message: error.localizedDescription, type: .other))
                 }
             }
         }

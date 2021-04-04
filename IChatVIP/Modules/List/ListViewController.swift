@@ -94,6 +94,9 @@ class ListViewController: UIViewController, ListDisplayLogic {
         case .displayChatRequest:
             router?.routeToChatRequest()
             
+        case .displayChat:
+            router?.routeToChat()
+            
         case .displayWaitingChats(let chats):
             waitingChats = chats
             reloadData()
@@ -265,12 +268,10 @@ extension ListViewController: UICollectionViewDelegate {
         
         switch section {
         case .waitingChats:
-            interactor?.makeRequest(request: .chatSelected(chat: chat))
+            interactor?.makeRequest(request: .chatSelected(chat: chat, type: .waitingChat))
             
         case .activeChats:
-            print("activeChats")
-            //let chatsVC = ChatsViewController(user: currentUser, chat: chat)
-            //navigationController?.pushViewController(chatsVC, animated: true)
+            interactor?.makeRequest(request: .chatSelected(chat: chat, type: .activeChat))
         }
     }
 }

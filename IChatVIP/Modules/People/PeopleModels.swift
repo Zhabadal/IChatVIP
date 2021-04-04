@@ -12,7 +12,7 @@ enum People {
     
     enum AlertType {
         case signOut
-        case simple
+        case other
     }
     
     enum Model {

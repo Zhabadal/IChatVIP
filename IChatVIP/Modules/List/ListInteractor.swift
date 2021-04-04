@@ -14,7 +14,7 @@ protocol ListBusinessLogic {
 }
 
 protocol ListDataStore {
-    var currentUser: MUser? { get set }
+    var currentUser: MUser! { get set }
     var chat: MChat? { get set }
 }
 
@@ -23,7 +23,7 @@ class ListInteractor: ListBusinessLogic, ListDataStore {
     var presenter: ListPresentationLogic?
     var service: ListService?
     
-    var currentUser: MUser?
+    var currentUser: MUser!
     var chat: MChat?
     
     private var waitingChatsListener: ListenerRegistration?
@@ -36,9 +36,7 @@ class ListInteractor: ListBusinessLogic, ListDataStore {
         
         switch request {
         case .setTitle:
-            if let username = currentUser?.username {
-                presenter?.presentData(response: .presentTitle(username))
-            }
+            presenter?.presentData(response: .presentTitle(currentUser!.username))
             
         case .setChatsObservers(let waitingChats, let activeChats):
             waitingChatsListener = ListenerService.shared.waitingChatsObserve(chats: waitingChats, completion: { (result) in
@@ -67,9 +65,15 @@ class ListInteractor: ListBusinessLogic, ListDataStore {
                 }
             })
             
-        case .chatSelected(let chat):
+        case .chatSelected(let chat, let type):
             self.chat = chat
-            presenter?.presentData(response: .presentChatRequest)
+            
+            switch type {
+            case .waitingChat:
+                presenter?.presentData(response: .presentChatRequest)
+            case .activeChat:
+                presenter?.presentData(response: .presentChat)
+            }
             
         case .changeChatToActive:
             FirestoreService.shared.changeToActive(chat: chat!) { (result) in

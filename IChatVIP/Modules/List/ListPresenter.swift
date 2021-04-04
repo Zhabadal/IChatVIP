@@ -24,6 +24,9 @@ class ListPresenter: ListPresentationLogic {
         case .presentChatRequest:
             viewController?.displayData(viewModel: .displayChatRequest)
             
+        case .presentChat:
+            viewController?.displayData(viewModel: .displayChat)
+            
         case .presentWaitingChats(let chats):
             viewController?.displayData(viewModel: .displayWaitingChats(chats))
             

@@ -13,7 +13,11 @@
 import UIKit
 
 enum SetupProfileVip {
-    // MARK: Use cases
+    
+    enum AlertType {
+        case profileSaved
+        case other
+    }
     
     enum Model {
         struct Request {
@@ -26,14 +30,14 @@ enum SetupProfileVip {
         struct Response {
             enum ResponseType {
                 case presentUsernameAndPhoto(name: String?, photoUrl: URL?)
-                case presentAlert(title: String, message: String)
+                case presentAlert(title: String, message: String, type: AlertType)
             }
         }
         
         struct ViewModel {
             enum ViewModelData {
                 case displayUsernameAndPhoto(name: String?, photoUrl: URL?)
-                case displayAlert(title: String, message: String)
+                case displayAlert(title: String, message: String, type: AlertType)
             }
         }
     }

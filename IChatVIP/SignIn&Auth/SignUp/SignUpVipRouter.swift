@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignUpVipRoutingLogic {
     func routeToParent()
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String, type: SignUpVip.AlertType)
     func routeToSetupProfile()
 }
 
@@ -24,36 +24,35 @@ class SignUpVipRouter: NSObject, SignUpVipRoutingLogic, SignUpVipDataPassing {
     var dataStore: SignUpVipDataStore?
     
     // MARK: Routing
+    
     func routeToParent() {
-        if let destinationVC = viewController?.presentingViewController as? AuthVipViewController {
-            navigateToParent(source: viewController!, destination: destinationVC)
-        }
+        let destinationVC = viewController?.presentingViewController as! AuthVipViewController
+        navigateToParent(source: viewController!, destination: destinationVC)
     }
     
-    func showAlert(title: String, message: String) {
-        if let viewController = viewController {
-            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
-                if self?.dataStore?.user != nil {
-                    self?.routeToSetupProfile()
-                }
+    func showAlert(title: String, message: String, type: SignUpVip.AlertType) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            switch type {
+            case .registered:
+                self.routeToSetupProfile()
+            case .other:
+                break
             }
-            alertVC.addAction(okAction)
-            presentFrom(source: viewController, destination: alertVC)
         }
+        alertVC.addAction(okAction)
+        presentFrom(source: viewController!, destination: alertVC)
     }
     
-    func routeToSetupProfile() {
-        if let viewController = viewController, let homeDS = dataStore {
-            let detailVC = SetupProfileVipViewController(nibName: nil, bundle: nil)
-            if var detailDS = detailVC.router?.dataStore {
-                passDataToDetail(source: homeDS, destination: &detailDS)
-                presentFrom(source: viewController, destination: detailVC)
-            }
-        }
+    func routeToSetupProfile() {        
+        let destinationVC = SetupProfileVipViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToSetupProfile(source: dataStore!, destination: &destinationDS)
+        presentFrom(source: viewController!, destination: destinationVC)
     }
     
     // MARK: - Navigation
+    
     private func navigateToParent(source: SignUpVipViewController, destination: AuthVipViewController) {
         source.dismiss(animated: true) {
             destination.router?.routeToLogin()
@@ -65,7 +64,8 @@ class SignUpVipRouter: NSObject, SignUpVipRoutingLogic, SignUpVipDataPassing {
     }
     
     // MARK: - Passing data
-    private func passDataToDetail(source: SignUpVipDataStore, destination: inout SetupProfileVipDataStore) {
+    
+    private func passDataToSetupProfile(source: SignUpVipDataStore, destination: inout SetupProfileVipDataStore) {
         destination.user = source.user
     }
 }

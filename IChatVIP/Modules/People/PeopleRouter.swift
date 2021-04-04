@@ -38,7 +38,7 @@ class PeopleRouter: NSObject, PeopleRoutingLogic, PeopleDataPassing {
                 alertVC.addAction(cancelAction)
                 alertVC.addAction(signOutAction)
                 
-            case .simple:
+            case .other:
                 let okAction = UIAlertAction(title: "Ok", style: .default)
                 alertVC.addAction(okAction)
             }

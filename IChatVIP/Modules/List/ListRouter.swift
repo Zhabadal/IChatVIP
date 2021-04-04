@@ -11,6 +11,7 @@ import UIKit
 protocol ListRoutingLogic {
     func showAlert(title: String?, message: String)
     func routeToChatRequest()
+    func routeToChat()
 }
 
 protocol ListDataPassing {
@@ -40,15 +41,31 @@ class ListRouter: NSObject, ListRoutingLogic, ListDataPassing {
         presentFrom(source: viewController!, destination: destinationVC)
     }
     
+    func routeToChat() {
+        let destinationVC = ChatsViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToChat(source: dataStore!, destination: &destinationDS)
+        navigateToChat(source: viewController!, destination: destinationVC)
+    }
+    
     // MARK: Navigation
     
     private func presentFrom(source: UIViewController, destination: UIViewController) {
         source.present(destination, animated: true)
     }
     
+    private func navigateToChat(source: UIViewController, destination: UIViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
+    
     // MARK: Passing data
     
     func passDataToChatRequest(source: ListDataStore, destination: inout ChatRequestDataStore) {
+        destination.chat = source.chat
+    }
+    
+    func passDataToChat(source: ListDataStore, destination: inout ChatsDataStore) {
+        destination.user = source.currentUser
         destination.chat = source.chat
     }
 

@@ -17,15 +17,15 @@ class FirestoreService {
     var currentUser: MUser!
     
     private var usersRef: CollectionReference {
-        return db.collection("users")
+        db.collection("users")
     }
     
     private var waitingChatsRef: CollectionReference {
-        return db.collection(["users", currentUser.id, "waitingChats"].joined(separator: "/"))
+        db.collection(["users", currentUser.id, "waitingChats"].joined(separator: "/"))
     }
     
     private var activeChatsRef: CollectionReference {
-        return db.collection(["users", currentUser.id, "activeChats"].joined(separator: "/"))
+        db.collection(["users", currentUser.id, "activeChats"].joined(separator: "/"))
     }
     
     func getUserData(user: User, completion: @escaping (Result<MUser, Error>) -> Void) {

@@ -11,7 +11,7 @@ import UIKit
 protocol AuthVipRoutingLogic {
     func routeToSignUp()
     func routeToLogin()
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String, type: AuthVip.AlertType)
     func routeToMainTabBar()
     func routeToSetupProfile()
 }
@@ -28,48 +28,42 @@ class AuthVipRouter: NSObject, AuthVipRoutingLogic, AuthVipDataPassing {
     // MARK: Routing
     
     func routeToSignUp() {
-        guard let viewController = viewController else { fatalError("Fail route to signUp") }
-        let signUpVC = SignUpVipViewController(nibName: nil, bundle: nil)
-        presentFrom(source: viewController, destination: signUpVC)
+        let signUpVC = SignUpVipViewController()
+        presentFrom(source: viewController!, destination: signUpVC)
     }
     
     func routeToLogin() {
-        guard let viewController = viewController else { fatalError("Fail route to login") }
-        let loginVC = LoginVipViewController(nibName: nil, bundle: nil)
-        presentFrom(source: viewController, destination: loginVC)
+        let loginVC = LoginVipViewController()
+        presentFrom(source: viewController!, destination: loginVC)
     }
     
-    func showAlert(title: String, message: String) {
-        if let viewController = viewController {
-            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default) { [unowned self] _ in
-                if self.dataStore?.muser != nil {
-                    self.routeToMainTabBar()
-                } else if self.dataStore?.user != nil {
-                    self.routeToSetupProfile()
-                }
+    func showAlert(title: String, message: String, type: AuthVip.AlertType) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            switch type {
+            case .authorized:
+                self.routeToMainTabBar()
+            case .registered:
+                self.routeToSetupProfile()
+            case .other:
+                break
             }
-            alertVC.addAction(okAction)
-            presentFrom(source: viewController, destination: alertVC)
         }
+        alertVC.addAction(okAction)
+        presentFrom(source: viewController!, destination: alertVC)
     }
     
     func routeToMainTabBar() {
-        if let viewController = viewController, let homeDS = dataStore, let muser = homeDS.muser {
-            let mainTabBarVC = MainTabBarViewController(currentUser: muser)
-            mainTabBarVC.modalPresentationStyle = .fullScreen
-            presentFrom(source: viewController, destination: mainTabBarVC)
-        }
+        let mainTabBarVC = MainTabBarViewController(currentUser: dataStore!.muser!)
+        mainTabBarVC.modalPresentationStyle = .fullScreen
+        presentFrom(source: viewController!, destination: mainTabBarVC)
     }
     
     func routeToSetupProfile() {
-        if let viewController = viewController, let homeDS = dataStore {
-            let detailVC = SetupProfileVipViewController(nibName: nil, bundle: nil)
-            if var detailDS = detailVC.router?.dataStore {
-                passDataToDetail(source: homeDS, destination: &detailDS)
-                presentFrom(source: viewController, destination: detailVC)
-            }
-        }
+        let destinationVC = SetupProfileVipViewController()
+        var destinationDS = destinationVC.router!.dataStore!
+        passDataToDetail(source: dataStore!, destination: &destinationDS)
+        presentFrom(source: viewController!, destination: destinationVC)
     }
     
     // MARK: - Navigation

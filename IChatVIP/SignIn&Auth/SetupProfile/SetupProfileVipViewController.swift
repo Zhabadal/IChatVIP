@@ -107,8 +107,8 @@ class SetupProfileVipViewController: UIViewController, SetupProfileVipDisplayLog
                 fillImageView.circleImageView.sd_setImage(with: url)
             }
             
-        case let .displayAlert(title, message):
-            router?.showAlert(title: title, message: message)
+        case let .displayAlert(title, message, type):
+            router?.showAlert(title: title, message: message, type: type)
         }
     }
 }
