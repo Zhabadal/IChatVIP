@@ -247,10 +247,6 @@ extension ChatsViewController: MessagesDisplayDelegate {
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         avatarView.isHidden = true
     }
-    
-    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        .bubble
-    }
 }
 
 // MARK: - InputBarAccessoryViewDelegate
